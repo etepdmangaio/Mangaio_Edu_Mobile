@@ -10,10 +10,10 @@ st.set_page_config(page_title="MangaioEdu", layout="wide")
 st.sidebar.title("📚 Mangaio - Uma Plataforma Educacional Colaborativa")
 
 with st.sidebar.expander("História", expanded=False):
-     st.markdown("### Subtemas")
-     subtema_escolhido = st.radio("Escolha um subtema", [
-                 "Crise do Primeiro Reinado", "Insatisfação do Nordeste", "Influências Liberais e Republicanas",
-                 "Deflagração da Revolta (1824)"], key="subtema")
+    st.markdown("### Subtemas")
+    subtema_escolhido = st.radio("Escolha um subtema", [
+        "Crise do Primeiro Reinado", "Insatisfação do Nordeste", "Influências Liberais e Republicanas",
+        "Deflagração da Revolta (1824)"], key="subtema")
 st.write("Subtema selecionado:", subtema_escolhido)
 
 if subtema_escolhido == "Crise do Primeiro Reinado":
@@ -22,8 +22,10 @@ if subtema_escolhido == "Crise do Primeiro Reinado":
 
 sidebar_geografia()
 
-
 sidebar_matematica()
 
+# topico_matematica = sidebar_matematica()
+
+# st.write("Tópico de matemática: ", topico_matematica)
 
 # sidebar_informacoes()

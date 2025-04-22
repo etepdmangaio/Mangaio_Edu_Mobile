@@ -15,10 +15,10 @@ def sidebar_historia2():
     with abas[0]:
         st.header("Introdução")
         st.write("""
-        A Crise do Primeiro Reinado (1822–1831) foi marcada por instabilidade política, econômica e social...
+        A Crise do Primeiro Reinado (1822–1831) foi marcada por instabilidade política, econômica e social.
         A Confederação do Equador surge como uma reação ao autoritarismo de D. Pedro I.
         """)
-
+        st.video("https://www.youtube.com/watch?v=_n6mLwFB1ss")
     with abas[1]:
         st.header("Linha do Tempo")
         st.markdown("""

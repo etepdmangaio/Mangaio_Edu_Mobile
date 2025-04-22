@@ -3,10 +3,10 @@ import streamlit.components.v1 as components
 
 
 def sidebar_historia2():
-    with st.sidebar.expander("História", expanded=False):
-        st.markdown("### Subtemas")
-        st.radio("Escolha um subtema", [
-                 "Crise do Primeiro Reinado", "Insatisfação do Nordeste "], key="subtema")
+    # with st.sidebar.expander("História", expanded=False):
+    #     st.markdown("### Subtemas")
+    #     st.radio("Escolha um subtema", [
+    #              "Crise do Primeiro Reinado", "Insatisfação do Nordeste "], key="subtema")
 
     # Tabs com conteúdos variados
     abas = st.tabs(["📖 Introdução", "🕒 Linha do Tempo",

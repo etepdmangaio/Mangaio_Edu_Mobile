@@ -34,3 +34,24 @@ pip install streamlit
 streamlit run app.py
 
 ```
+
+## Adicionando arquivos no repositório
+
+```
+git add .
+
+```
+
+## Git commit
+
+```
+git commit -m "Commit x.x"
+
+```
+
+## Git push
+
+```
+git push -u origin main
+
+```

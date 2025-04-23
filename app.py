@@ -2,6 +2,7 @@ import streamlit as st
 from sidebar_components.matematica import sidebar_matematica
 from sidebar_components.geografia import sidebar_geografia
 from sidebar_components.historia import sidebar_historia2
+from sidebar_components.historia import sidebar_historia3
 # from sidebar_components.Informacoes import sidebar_informacoes
 
 
@@ -18,6 +19,8 @@ st.write("Subtema selecionado:", subtema_escolhido)
 
 if subtema_escolhido == "Crise do Primeiro Reinado":
     sidebar_historia2()
+elif subtema_escolhido == "Insatisfação do Nordeste":
+    sidebar_historia3()
 
 
 sidebar_geografia()

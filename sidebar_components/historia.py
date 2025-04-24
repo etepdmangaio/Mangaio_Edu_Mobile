@@ -1,5 +1,6 @@
 import streamlit as st
 import streamlit.components.v1 as components
+import pydeck as pdk
 
 
 def sidebar_historia2():
@@ -152,7 +153,40 @@ def sidebar_historia3():
         Além disso, a região sofria com crise econômica pós-Independência, altos impostos e a percepção de que o governo imperial privilegiava o Sudeste. Esses fatores, somados à influência de ideais republicanos e liberais,
         criaram um clima de revolta
         """)
-        st.image("https://www.personacursos.com.br/pm/wp-content/uploads/2018/05/confederação.jpg", use_container_width=True)
+        
+        st.title('Mapa do Nordeste')
+        pontos = [
+            {"nome": "Recife", "coords": [-34.877002, -8.047562]},
+            {"nome": "Salvador", "coords": [-38.501637, -12.977749]},
+            {"nome": "Fortaleza", "coords": [-38.526670, -3.731862]},
+            {"nome": "Natal", "coords": [-35.200916, -5.779257]},
+            {"nome": "João Pessoa", "coords": [-34.845012, -7.119495]}
+        ]
+
+        layer = pdk.Layer(
+            "ScatterplotLayer",
+            data=pontos,
+            get_position="coords",
+            get_color=[255, 0, 0, 200],
+            get_radius=20000,
+            pickable=True
+    
+        )
+        
+        
+        
+        view_state = pdk.ViewState(
+            longitude=-38.0,
+            latitude=-8.5,
+            zoom=5,
+            pitch=0
+        )
+        
+        st.pydeck_chart(pdk.Deck(
+            layers=[layer],
+            initial_view_state=view_state,
+            tooltip={"text": "{nome}"}
+        ))
 
     with abas[1]:
         st.header("Personagens Importantes")

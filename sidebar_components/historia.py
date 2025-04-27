@@ -140,3 +140,7 @@ def sidebar_historia2():
                 st.success("✅ Resposta correta!")
             else:
                 st.error("❌ Resposta incorreta.")
+
+def sidebar_influencias_liberais_republicanas():
+    termos = st.tabs(["📖 Introdução", "🕒 Linha do Tempo",
+                   "👤 Personagens", "Caça Palavras", "🧠 Quiz"])

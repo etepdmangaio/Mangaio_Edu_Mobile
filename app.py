@@ -19,6 +19,9 @@ st.write("Subtema selecionado:", subtema_escolhido)
 if subtema_escolhido == "Crise do Primeiro Reinado":
     sidebar_historia2()
 
+if subtema_escolhido == "Influências Liberais e Republicanas":
+    sidebar_historia4()
+
 
 sidebar_geografia()
 

@@ -141,3 +141,32 @@ def sidebar_historia2():
             else:
                 st.error("❌ Resposta incorreta.")
 
+def sidebar_historia4():
+    abas = st.tabs(["📖 Introdução", "🕒 Linha do Tempo",
+                   "👤 Personagens", "Caça Palavras", "🧠 Quiz"])
+    
+with abas[0]:
+        st.header("Introdução")
+        st.write("""
+        A Confederação do Equador (1824) foi um movimento separatista influenciado por ideias liberais e republicanas, inspirado pela independência das colônias espanholas e pelos ideais da Revolução Francesa. Defendia a descentralização do poder, o federalismo e a liberdade de imprensa. Os líderes do movimento, como Frei Caneca, Cipriano Barata e Manuel de Carvalho, buscavam romper com o autoritarismo do Império. A Confederação surgiu como reação à imposição de Dom Pedro I sobre a Constituição outorgada. Apesar da repressão violenta, o movimento marcou a resistência liberal no Nordeste do Brasil..
+        """)
+        st.video("https://www.youtube.com/watch?v=2vfKe0kBJw4")
+
+with abas[1]:
+        st.header("Linha do Tempo")
+        st.markdown("""
+        - **1789**: Revolução Francesa: difusão dos ideais de liberdade, igualdade e fraternidade.  
+        - **1817**: Revolução Pernambucana: primeira grande tentativa de independência com ideais republicanos no Brasil.  
+        - **1821**: Retorno de Dom João VI a Portugal e início do processo de centralização do poder por Dom Pedro I.  
+        - **1824 (março)**: Outorga da Constituição de 1824 por Dom Pedro I, centralizadora e imposta sem participação popular.
+        - **1824 (julho)**: Eclosão da Confederação do Equador, influenciada pelas ideias liberais e pelo descontentamento com o autoritarismo imperial.
+        """)
+
+with abas[2]:
+        st.header("Personagens Importantes")
+        st.write("""
+        - **Frei Caneca (Joaquim do Amor Divino Caneca)** – Religioso, jornalista e intelectual, foi um dos principais ideólogos do movimento. Defensor do republicanismo, federalismo e da liberdade de expressão. Era carismático e articulador político.
+        - **Cipriano Barata** – Médico, jornalista e ativista político, conhecido por sua linguagem inflamada e defesa intransigente da liberdade. Atuou em várias revoltas e propagava ideias iluministas e republicanas.
+        - **Manuel de Carvalho Pais de Andrade** – Presidente da província de Pernambuco e líder civil da Confederação. Apoiou a causa republicana e foi peça central na proclamação do governo confederado.
+        - **Pedro Ivo Veloso da Silveira** –Militar e líder da resistência armada. Comandou as forças confederadas no interior, sendo símbolo da luta até os últimos momentos do movimento.
+        """)

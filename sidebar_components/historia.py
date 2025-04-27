@@ -157,3 +157,17 @@ def sidebar_influencias_liberais_republicanas():
             # Exibindo o texto justificado no Streamlit
             st.markdown(html_texto, unsafe_allow_html=True)           
             st.video("https://www.youtube.com/watch?v=2vfKe0kBJw4")
+
+    with termos[1]:
+            st.header("Linha do Tempo")
+            st.markdown("""
+            - **1789**: Revolução Francesa: difusão dos ideais de liberdade, igualdade e fraternidade.
+                          
+            - **1817**: Revolução Pernambucana: primeira grande tentativa de independência com ideais republicanos no Brasil.
+                          
+            - **1821**: Retorno de Dom João VI a Portugal e início do processo de centralização do poder por Dom Pedro I. 
+
+            - **1824 (março)**: Outorga da Constituição de 1824 por Dom Pedro I, centralizadora e imposta sem participação popular.
+                        
+            - **1824 (julho)**: Eclosão da Confederação do Equador, influenciada pelas ideias liberais e pelo descontentamento com o autoritarismo imperial.
+            """)

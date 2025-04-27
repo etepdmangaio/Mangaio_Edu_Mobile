@@ -155,12 +155,12 @@ def sidebar_influencias_liberais_republicanas():
             </div>
             """
             # Exibindo o texto justificado no Streamlit
-            st.markdown(html_texto, unsafe_allow_html=True)           
+            st.markdown(html_texto, unsafe_allow_html=True)          
             st.video("https://www.youtube.com/watch?v=2vfKe0kBJw4")
 
     with termos[1]:
             st.header("Linha do Tempo")
-            st.markdown("""
+            texto = ("""
             - **1789**: Revolução Francesa: difusão dos ideais de liberdade, igualdade e fraternidade.
                           
             - **1817**: Revolução Pernambucana: primeira grande tentativa de independência com ideais republicanos no Brasil.
@@ -171,15 +171,28 @@ def sidebar_influencias_liberais_republicanas():
                         
             - **1824 (julho)**: Eclosão da Confederação do Equador, influenciada pelas ideias liberais e pelo descontentamento com o autoritarismo imperial.
             """)
+            html_texto = f"""
+            <div style="text-align: justify; font-family: Arial, sans-serif; font-size: 16px;">
+                {texto}
+            </div>
+            """
+            st.markdown(html_texto, unsafe_allow_html=True)
 
     with termos[2]:
             st.header("Personagens Importantes")
-            st.write("""
+            texto = ("""
             - **Frei Caneca (Joaquim do Amor Divino Caneca)** – Religioso, jornalista e intelectual, foi um dos principais ideólogos do movimento. Defensor do republicanismo, federalismo e da liberdade de expressão. Era carismático e articulador político.
                      
             - **Cipriano Barata** – Médico, jornalista e ativista político, conhecido por sua linguagem inflamada e defesa intransigente da liberdade. Atuou em várias revoltas e propagava ideias iluministas e republicanas.
                      
-            - **Manuel de Carvalho Pais de Andrade** – Presidente da província de Pernambuco e líder civil da Confederação. Apoiou a causa republicana e foi peça central na proclamação do governo confederado.
+            - **Manuel de Carvalho Paes de Andrade** – Presidente da província de Pernambuco e líder civil da Confederação. Apoiou a causa republicana e foi peça central na proclamação do governo confederado.
                      
             - **Pedro Ivo Veloso da Silveira** –Militar e líder da resistência armada. Comandou as forças confederadas no interior, sendo símbolo da luta até os últimos momentos do movimento.
             """)
+
+            html_texto = f"""
+            <div style="text-align: justify; font-family: Arial, sans-serif; font-size: 16px;">
+                {texto}
+            </div>
+            """
+            st.markdown(html_texto, unsafe_allow_html=True)

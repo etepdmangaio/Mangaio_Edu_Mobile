@@ -148,7 +148,12 @@ def sidebar_influencias_liberais_republicanas():
     with termos[0]:
             st.header("Introdução")
             texto = """A Confederação do Equador foi um movimento separatista influenciado por ideias liberais e republicanas, inspirado pela independência das colônias espanholas e pelos ideais da Revolução Francesa. Defendia a descentralização do poder, o federalismo e a liberdade de imprensa. Os líderes do movimento, como Frei Caneca, Cipriano Barata e Manuel de Carvalho, buscavam romper com o autoritarismo do Império. Esta Confederação surgiu como reação à imposição de Dom Pedro I sobre a Constituição outorgada. Apesar da repressão violenta, o movimento marcou a resistência liberal no Nordeste do Brasil."""
-            largura = 50
-            texto_justificado = st.textwrap.fill(texto, width=largura)
-            st.print(texto_justificado)            
+            # Usando HTML para justificar o texto
+            html_texto = f"""
+            <div style="text-align: justify; font-family: Arial, sans-serif; font-size: 16px;">
+                {texto}
+            </div>
+            """
+            # Exibindo o texto justificado no Streamlit
+            st.markdown(html_texto, unsafe_allow_html=True)           
             st.video("https://www.youtube.com/watch?v=2vfKe0kBJw4")

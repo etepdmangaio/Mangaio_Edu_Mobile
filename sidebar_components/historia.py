@@ -222,12 +222,17 @@ def sidebar_influencias_liberais_republicanas():
         td.found {
             background-color: lightgreen;
         }
+    
+        mark{
+            background-color: rgb(41, 222, 216);
+        }
+    
         </style>
 
         <div id="game"></div>
         <button onclick="checkWord()">Verificar</button>
         <p id="status"></p>
-        <p><b><mark style="background-color: lime;">Palavras para encontrar:</mark></b> <span id="word-list"></span></p>
+        <p><b><mark>Palavras para encontrar:</mark></b> <span id="word-list"></span></p>
 
         <script>
         const words = ["MOVIMENTO", "LIBERAIS", "SEPARATISTA", "AUTORITARISMO", "DESCENTRALIZADO", "REVOLUCAO", "REPRESSAO", "NORDESTE", "VIOLENCIA", "COLONIAS", "OUTORGADA", "IMPOSICAO", "CONSTITUICAO, INFLUENCIAS"];

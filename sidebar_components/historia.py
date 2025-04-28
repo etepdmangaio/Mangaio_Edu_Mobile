@@ -209,7 +209,7 @@ def sidebar_influencias_liberais_republicanas():
             background-color: white;
         }
         td {
-            border: 4px solid blue;
+            border: 3px solid rgb(41, 222, 216);
             padding: 10px;
             text-align: center;
             font-weight: bold;
@@ -236,20 +236,27 @@ def sidebar_influencias_liberais_republicanas():
         <p><b><mark>Palavras para encontrar:</mark></b> <h5><span id="word-list"></span><h5></p>
 
         <script>
-        const words = ["MOVIMENTO", "LIBERAIS", "SEPARATISTA", "AUTORITARISMO", "DESCENTRALIZADO", "REVOLUCAO", "REPRESSAO", "NORDESTE", "VIOLENCIA", "COLONIAS", "OUTORGADA", "IMPOSICAO", "CONSTITUICAO, INFLUENCIAS"];
+        const words = ["MOVIMENTO", "LIBERAIS", "SEPARATISTA", "AUTORITARISMO", "DESCENTRALIZADO", "REVOLUCAO", "REPRESSAO", "NORDESTE", "VIOLENCIA", "COLONIAS", "OUTORGADA", "IMPOSICAO", "CONSTITUICAO, INFLUENCIAS", "REPUBLICANAS"];
         let foundWords = [];
         let selectedCells = [];
 
         const grid = [
-            ["M", "T", "R", "E", "A", "M", "L", "I", "E", "A", "M", "L", "L", "I", "E", "A", "M", "I"],
-            ["O", "U", "T", "O", "R", "G", "D", "I", "E", "A", "M", "L", "A", "R", "E", "A", "M", "A"],
-            ["V", "A", "R", "E", "P", "R", "E", "I", "E", "A", "M", "L", "S", "S", "A", "O", "A", "I"],
-            ["I", "M", "C", "O", "S", "I", "C", "A", "I", "E", "A", "M", "L", "O", "E", "U", "N", "C"],
-            ["M", "U", "C", "O", "L", "O", "N", "I", "E", "A", "M", "L", "I", "A", "S", "I", "E", "N"],
-            ["E", "T", "R", "R", "E", "A", "M", "I", "E", "A", "M", "L", "L", "I", "A", "M", "L", "E"],
-            ["N", "Y", "T", "N", "O", "R", "D", "I", "E", "A", "M", "L", "E", "S", "T", "E", "A", "L"],
-            ["T", "A", "V", "E", "S", "C", "I", "I", "E", "A", "M", "L", "P", "R", "I", "A", "N", "O"],
-            ["O", "S", "E", "P", "A", "R", "A", "I", "E", "A", "M", "L", "T", "I", "S", "T", "I", "A"]
+            ["M", "T", "R", "R", "A", "M", "L", "I", "B", "E", "R", "A", "I", "S", "E", "A", "M", "A"],
+            ["O", "U", "T", "E", "R", "G", "A", "D", "A", "A", "M", "L", "A", "R", "E", "A", "U", "A"],
+            ["V", "A", "R", "V", "O", "O", "L", "E", "N", "C", "I", "A", "S", "S", "A", "T", "A", "I"],
+            ["I", "N", "F", "O", "U", "T", "O", "R", "G", "O", "D", "A", "L", "O", "O", "U", "N", "C"],
+            ["M", "U", "O", "C", "T", "O", "N", "I", "U", "A", "R", "L", "I", "R", "S", "I", "E", "C"],
+            ["E", "T", "R", "E", "O", "A", "M", "I", "L", "A", "M", "D", "I", "I", "A", "M", "L", "O"],
+            ["N", "Y", "E", "C", "R", "N", "D", "I", "F", "A", "M", "T", "E", "S", "T", "E", "A", "L"],
+            ["T", "A", "V", "A", "G", "A", "S", "I", "N", "A", "A", "L", "P", "S", "I", "A", "N", "O"],
+            ["O", "S", "O", "O", "A", "S", "S", "T", "I", "R", "T", "A", "T", "I", "T", "T", "I", "N"],
+            ["A", "R", "L", "P", "D", "S", "S", "T", "I", "S", "T", "A", "U", "I", "S", "E", "I", "I"],
+            ["C", "U", "U", "P", "A", "E", "S", "S", "E", "T", "T", "A", "T", "I", "S", "T", "I", "A"],
+            ["F", "W", "C", "P", "L", "R", "M", "O", "I", "N", "U", "L", "U", "E", "C", "I", "A", "S"],
+            ["A", "Z", "A", "P", "E", "O", "S", "T", "I", "O", "A", "I", "I", "S", "O", "P", "M", "I"],
+            ["C", "R", "O", "P", "A", "E", "S", "S", "E", "S", "T", "A", "C", "I", "S", "T", "I", "A"],
+            ["F", "I", "I", "P", "A", "R", "A", "T", "I", "S", "T", "A", "T", "A", "S", "T", "I", "S"]
+            ["F", "S", "E", "P", "A", "R", "A", "T", "I", "S", "T", "A", "T", "A", "O", "T", "I", "S"]
         ]            
         
         function renderGrid() {

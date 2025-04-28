@@ -187,7 +187,7 @@ def sidebar_influencias_liberais_republicanas():
                      
             - **Manuel de Carvalho Paes de Andrade** – Presidente da província de Pernambuco e líder civil da Confederação. Apoiou a causa republicana e foi peça central na proclamação do governo confederado.
                      
-            - **Pedro Ivo Veloso da Silveira** –Militar e líder da resistência armada. Comandou as forças confederadas no interior, sendo símbolo da luta até os últimos momentos do movimento.
+            - **Pedro Ivo Veloso da Silveira** – Militar e líder da resistência armada. Comandou as forças confederadas no interior, sendo símbolo da luta até os últimos momentos do movimento.
             """)
 
             html_texto = f"""

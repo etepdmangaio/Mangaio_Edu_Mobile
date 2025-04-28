@@ -196,3 +196,101 @@ def sidebar_influencias_liberais_republicanas():
             </div>
             """
             st.markdown(html_texto, unsafe_allow_html=True)
+
+    with termos[3]:
+
+        st.header("Caça-palavras")
+        st.write("🎮 Aqui é onde o jogo vai!")
+        html_code = """
+        <style>
+        table {
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+        }
+        td.selected {
+            background-color: yellow;
+        }
+        td.found {
+            background-color: lightgreen;
+        }
+        </style>
+
+        <div id="game"></div>
+        <button onclick="checkWord()">Verificar</button>
+        <p id="status"></p>
+        <p><b>Palavras para encontrar:</b> <span id="word-list"></span></p>
+
+        <script>
+        const words = ["MOVIMENTO", "LIBERAIS", "SEPARATISTA", "AUTORITARISMO", "DESCENTRALIZADO", "REVOLUÇÃO", "REPRESSÃO", "NORDESTE", "VIOLÊNCIA", "COLÔNIAS", "OUTORGADA", "IMPOSIÇÃO", "CONSTITUIÇÃO"];
+        let foundWords = [];
+        let selectedCells = [];
+
+        const grid = [
+            ["M", "T", "R", "E", "A", "M", "L", "I", "E", "A", "M", "L", "I"],
+            ["O", "U", "T", "O", "R", "G", "D", "A", "R", "E", "A", "M", "A"],
+            ["V", "A", "R", "E", "P", "R", "E", "S", "S", "Ã", "O", "A", "I"],
+            ["I", "M", "C", "O", "S", "I", "Ç", "Ã", "O", "E", "U", "N", "C"],
+            ["M", "U", "C", "O", "L", "Ô", "N", "I", "A", "S", "I", "E", "N"],
+            ["E", "T", "R", "R", "E", "A", "M", "L", "I", "A", "M", "L", "Ê"],
+            ["N", "Y", "T", "N", "O", "R", "D", "E", "S", "T", "E", "A", "L"],
+            ["T", "A", "V", "E", "S", "C", "I", "P", "R", "I", "A", "N", "O"],
+            ["O", "S", "E", "P", "A", "R", "A", "T", "I", "S", "T", "A", "I"],
+            ["L", "I", "B", "E", "R", "A", "I", "S", "K", "D", "Q", "P", "V"],
+            ["O", "M", "S", "I", "R", "A", "T", "I", "R", "O", "T", "U", "A"]
+        ];
+
+        function renderGrid() {
+            let html = "<table>";
+            for (let i = 0; i < grid.length; i++) {
+            html += "<tr>";
+            for (let j = 0; j < grid[i].length; j++) {
+                html += `<td onclick="selectCell(this, ${i}, ${j})" data-i="${i}" data-j="${j}">${grid[i][j]}</td>`;
+            }
+            html += "</tr>";
+            }
+            html += "</table>";
+            document.getElementById("game").innerHTML = html;
+            document.getElementById("word-list").textContent = words.join(", ");
+        }
+
+        function selectCell(cell, i, j) {
+            if (cell.classList.contains("found")) return;
+
+            if (cell.classList.contains("selected")) {
+            cell.classList.remove("selected");
+            selectedCells = selectedCells.filter(c => !(c.i === i && c.j === j));
+            } else {
+            cell.classList.add("selected");
+            selectedCells.push({ i, j, letter: grid[i][j], cell });
+            }
+        }
+
+        function checkWord() {
+            const formedWord = selectedCells.map(c => c.letter).join("");
+            const upperWord = formedWord.toUpperCase();
+            const status = document.getElementById("status");
+
+            if (words.includes(upperWord) && !foundWords.includes(upperWord)) {
+            selectedCells.forEach(c => c.cell.classList.add("found"));
+            foundWords.push(upperWord);
+            status.textContent = `✅ Palavra encontrada: ${upperWord}`;
+            } else {
+            status.textContent = `❌ Palavra inválida: ${upperWord}`;
+            }
+
+            selectedCells.forEach(c => c.cell.classList.remove("selected"));
+            selectedCells = [];
+        }
+
+        renderGrid();
+        </script>
+        """
+        components.html(html_code, height=450)

@@ -206,6 +206,7 @@ def sidebar_influencias_liberais_republicanas():
         table {
             border-collapse: collapse;
             margin-bottom: 10px;
+            background-color: white;
         }
         td {
             border: 1px solid black;

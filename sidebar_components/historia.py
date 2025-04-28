@@ -306,4 +306,4 @@ def sidebar_influencias_liberais_republicanas():
         renderGrid();
         </script>
         """
-        components.html(html_code, height=700)
+        components.html(html_code, height=1000)

@@ -280,6 +280,8 @@ def sidebar_influencias_liberais_republicanas():
             if (words.includes(upperWord) && !foundWords.includes(upperWord)) {
             selectedCells.forEach(c => c.cell.classList.add("found"));
             foundWords.push(upperWord);
+            let htlm = `<span style="color: green;">${upperWord}</span>`;
+            document.getElementById("word-list").innerHTML = document.getElementById("word-list").innerHTML.replace(upperWord, htlm);
             status.textContent = `✅ Palavra encontrada: ${upperWord}`;
             } else {
             status.textContent = `❌ Palavra inválida: ${upperWord}`;

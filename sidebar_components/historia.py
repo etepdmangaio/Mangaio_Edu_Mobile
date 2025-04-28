@@ -227,7 +227,7 @@ def sidebar_influencias_liberais_republicanas():
         <div id="game"></div>
         <button onclick="checkWord()">Verificar</button>
         <p id="status"></p>
-        <p><b>Palavras para encontrar:</b> <span id="word-list"></span></p>
+        <p><b><mark style="background-color: lime;">Palavras para encontrar:</mark></b> <span id="word-list"></span></p>
 
         <script>
         const words = ["MOVIMENTO", "LIBERAIS", "SEPARATISTA", "AUTORITARISMO", "DESCENTRALIZADO", "REVOLUCAO", "REPRESSAO", "NORDESTE", "VIOLENCIA", "COLONIAS", "OUTORGADA", "IMPOSICAO", "CONSTITUICAO, INFLUENCIAS"];
@@ -279,9 +279,8 @@ def sidebar_influencias_liberais_republicanas():
 
             if (words.includes(upperWord) && !foundWords.includes(upperWord)) {
             selectedCells.forEach(c => c.cell.classList.add("found"));
-            foundWords.push(upperWord);
-            let htlm = `<span style="color: green;">${upperWord}</span>`;
-            document.getElementById("word-list").innerHTML = document.getElementById("word-list").innerHTML.replace(upperWord, htlm);
+            foundWords.push(upperWord);            
+
             status.textContent = `✅ Palavra encontrada: ${upperWord}`;
             } else {
             status.textContent = `❌ Palavra inválida: ${upperWord}`;

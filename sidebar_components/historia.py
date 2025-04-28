@@ -209,7 +209,7 @@ def sidebar_influencias_liberais_republicanas():
             background-color: white;
         }
         td {
-            border: 4px solid black;
+            border: 4px solid blue;
             padding: 10px;
             text-align: center;
             font-weight: bold;
@@ -244,9 +244,8 @@ def sidebar_influencias_liberais_republicanas():
             ["N", "Y", "T", "N", "O", "R", "D", "I", "E", "A", "M", "L", "E", "S", "T", "E", "A", "L"],
             ["T", "A", "V", "E", "S", "C", "I", "I", "E", "A", "M", "L", "P", "R", "I", "A", "N", "O"],
             ["O", "S", "E", "P", "A", "R", "A", "I", "E", "A", "M", "L", "T", "I", "S", "T", "I", "A"]
-        ]             
+        ]            
         
-
         function renderGrid() {
             let html = "<table>";
             for (let i = 0; i < grid.length; i++) {
@@ -293,4 +292,4 @@ def sidebar_influencias_liberais_republicanas():
         renderGrid();
         </script>
         """
-        components.html(html_code, height=450)
+        components.html(html_code, height=700)

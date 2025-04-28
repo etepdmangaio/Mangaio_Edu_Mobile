@@ -209,7 +209,7 @@ def sidebar_influencias_liberais_republicanas():
             background-color: white;
         }
         td {
-            border: 1px solid black;
+            border: 4px solid black;
             padding: 10px;
             text-align: center;
             font-weight: bold;

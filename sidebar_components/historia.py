@@ -230,23 +230,22 @@ def sidebar_influencias_liberais_republicanas():
         <p><b>Palavras para encontrar:</b> <span id="word-list"></span></p>
 
         <script>
-        const words = ["MOVIMENTO", "LIBERAIS", "SEPARATISTA", "AUTORITARISMO", "DESCENTRALIZADO", "REVOLUÇÃO", "REPRESSÃO", "NORDESTE", "VIOLÊNCIA", "COLÔNIAS", "OUTORGADA", "IMPOSIÇÃO", "CONSTITUIÇÃO"];
+        const words = ["MOVIMENTO", "LIBERAIS", "SEPARATISTA", "AUTORITARISMO", "DESCENTRALIZADO", "REVOLUCAO", "REPRESSAO", "NORDESTE", "VIOLENCIA", "COLONIAS", "OUTORGADA", "IMPOSICAO", "CONSTITUICAO, INFLUENCIAS"];
         let foundWords = [];
         let selectedCells = [];
 
         const grid = [
-            ["M", "T", "R", "E", "A", "M", "L", "I", "E", "A", "M", "L", "I"],
-            ["O", "U", "T", "O", "R", "G", "D", "A", "R", "E", "A", "M", "A"],
-            ["V", "A", "R", "E", "P", "R", "E", "S", "S", "Ã", "O", "A", "I"],
-            ["I", "M", "C", "O", "S", "I", "Ç", "Ã", "O", "E", "U", "N", "C"],
-            ["M", "U", "C", "O", "L", "Ô", "N", "I", "A", "S", "I", "E", "N"],
-            ["E", "T", "R", "R", "E", "A", "M", "L", "I", "A", "M", "L", "Ê"],
-            ["N", "Y", "T", "N", "O", "R", "D", "E", "S", "T", "E", "A", "L"],
-            ["T", "A", "V", "E", "S", "C", "I", "P", "R", "I", "A", "N", "O"],
-            ["O", "S", "E", "P", "A", "R", "A", "T", "I", "S", "T", "A", "I"],
-            ["L", "I", "B", "E", "R", "A", "I", "S", "K", "D", "Q", "P", "V"],
-            ["O", "M", "S", "I", "R", "A", "T", "I", "R", "O", "T", "U", "A"]
-        ];
+            ["M", "T", "R", "E", "A", "M", "L", "I", "E", "A", "M", "L", "L", "I", "E", "A", "M", "I"],
+            ["O", "U", "T", "O", "R", "G", "D", "I", "E", "A", "M", "L", "A", "R", "E", "A", "M", "A"],
+            ["V", "A", "R", "E", "P", "R", "E", "I", "E", "A", "M", "L", "S", "S", "A", "O", "A", "I"],
+            ["I", "M", "C", "O", "S", "I", "C", "A", "I", "E", "A", "M", "L", "O", "E", "U", "N", "C"],
+            ["M", "U", "C", "O", "L", "O", "N", "I", "E", "A", "M", "L", "I", "A", "S", "I", "E", "N"],
+            ["E", "T", "R", "R", "E", "A", "M", "I", "E", "A", "M", "L", "L", "I", "A", "M", "L", "E"],
+            ["N", "Y", "T", "N", "O", "R", "D", "I", "E", "A", "M", "L", "E", "S", "T", "E", "A", "L"],
+            ["T", "A", "V", "E", "S", "C", "I", "I", "E", "A", "M", "L", "P", "R", "I", "A", "N", "O"],
+            ["O", "S", "E", "P", "A", "R", "A", "I", "E", "A", "M", "L", "T", "I", "S", "T", "I", "A"]
+        ]             
+        
 
         function renderGrid() {
             let html = "<table>";

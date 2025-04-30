@@ -55,3 +55,20 @@ git commit -m "Commit x.x"
 git push -u origin main
 
 ```
+## Criando uma branch
+
+```
+git branch
+git checkout -b guilherme
+git add .
+git status
+git push origin guilherme
+
+```
+
+## Desativando o ambiente virtual
+
+```
+deactivate
+
+```

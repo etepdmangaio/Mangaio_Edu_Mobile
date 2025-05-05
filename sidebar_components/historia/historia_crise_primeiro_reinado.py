@@ -1,6 +1,6 @@
 import streamlit as st
 import streamlit.components.v1 as components
-from streamlit_sortables import sort_items
+#from streamlit_sortables import sort_items
 
 
 def _crise_primeiro_reinado():

@@ -233,22 +233,47 @@ def _historia_influe_liber_republ():
                 }
             ]
 
+            acertos = 0
+            erros = 0
+
             for i, p in enumerate(perguntas):
-                st.markdown(f"### {i+1}. {p['pergunta']}")
-                col1, col2, col3, col4, col5 = st.columns(5)
+                st.subheader(f"{i+1}. {p['pergunta']}")
+                resposta = st.radio(
+                    "Escolha uma alternativa:",
+                    options=p["alternativas"],
+                    key=f"resposta_deflagracao_revolta{i}"
+                )
 
-                # Usando chaves únicas no st.session_state para isolar as respostas
-                if f"resposta_consequencias_{i}" not in st.session_state:
-                    st.session_state[f"resposta_consequencias_{i}"] = None
-
-                for j, alternativa in enumerate(p["alternativas"]):
-                    col = [col1, col2, col3, col4, col5][j % 5]
-                    if col.button(f"{alternativa}", key=f"q1_{i}_a{j}"):
-                        st.session_state[f"resposta_consequencias_{i}"] = alternativa
-
-                resposta = st.session_state[f"resposta_consequencias_{i}"]
-                if resposta:
+            # Verificação e contagem (fora do loop de exibição das perguntas)
+            if st.button("Ver resultado"):
+                for i, p in enumerate(perguntas):
+                    resposta = st.session_state.get(
+                        f"resposta_deflagracao_revolta{i}")
                     if resposta == p["correta"]:
-                        st.success(f"✅ Boa! Resposta correta: **{resposta}**")
+                        acertos += 1
                     else:
-                        st.error(f"❌ Opa! Resposta errada: **{resposta}**\n\n💡 Resposta certa: **{p['correta']}**")
+                        erros += 1
+
+                st.markdown("---")
+                st.success(f"✅ Total de acertos: **{acertos}**")
+                st.error(f"❌ Total de erros: **{erros}**")
+
+            # for i, p in enumerate(perguntas):
+            #     st.markdown(f"### {i+1}. {p['pergunta']}")
+            #     col1, col2, col3, col4, col5 = st.columns(5)
+
+            #     # Usando chaves únicas no st.session_state para isolar as respostas
+            #     if f"resposta_consequencias_{i}" not in st.session_state:
+            #         st.session_state[f"resposta_consequencias_{i}"] = None
+
+            #     for j, alternativa in enumerate(p["alternativas"]):
+            #         col = [col1, col2, col3, col4, col5][j % 5]
+            #         if col.button(f"{alternativa}", key=f"q1_{i}_a{j}"):
+            #             st.session_state[f"resposta_consequencias_{i}"] = alternativa
+
+            #     resposta = st.session_state[f"resposta_consequencias_{i}"]
+            #     if resposta:
+            #         if resposta == p["correta"]:
+            #             st.success(f"✅ Boa! Resposta correta: **{resposta}**")
+            #         else:
+            #             st.error(f"❌ Opa! Resposta errada: **{resposta}**\n\n💡 Resposta certa: **{p['correta']}**")

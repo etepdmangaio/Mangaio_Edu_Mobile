@@ -6,8 +6,8 @@ from sidebar_components.historia.historia_crise_primeiro_reinado import _crise_p
 from sidebar_components.historia.historia_deflagracao_revolta_1824 import _historia_deflagracao_revolta_1824
 from sidebar_components.historia.historia_repressao_imperial import _historia_repressao_imperial
 from sidebar_components.historia.historia_consequencias import _historia_consequencias
-#from sidebar_components.historia.
-#from sidebar_components.historia. import _insatisfacao_nordeste
+from sidebar_components.historia.historia_influencias_liberais_republicanas import _historia_influe_liber_republ
+from sidebar_components.historia.historia_insatisfacao_nordeste import _insatisfacao_nordeste
 
 
 def pagina_app():
@@ -40,10 +40,11 @@ def pagina_app():
         _crise_primeiro_reinado()
 
     if subtema_escolhido == "Insatisfação do Nordeste":
-        #_insatisfacao_nordeste()
-        pass
+        _insatisfacao_nordeste()
+        #pass
 
     if subtema_escolhido == "Influências Liberais e Republicanas":
+        _historia_influe_liber_republ()
         pass
 
     if subtema_escolhido == "Deflagração da Revolta (1824)":

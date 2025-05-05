@@ -72,3 +72,10 @@ git push origin guilherme
 deactivate
 
 ```
+
+## Criando o arquivo requerements.txt
+
+```
+pip freeze > requirements.txt
+
+```

@@ -8,7 +8,7 @@
 
 ## Criar o ambiente virtual
 
-## C:\Users\profa\Documents\projetos\mangaio_edu>
+## C:\Users\profa\Documents\projetos\mangaio>
 
 ```
 python -m venv venv
@@ -21,10 +21,10 @@ python -m venv venv
 
 ```
 
-## Instalando a biblioteca do streamlit
+## Instalando as bibliotecas
 
 ```
-pip install streamlit
+pip install -r requirements.txt
 
 ```
 
@@ -59,10 +59,10 @@ git push -u origin main
 
 ```
 git branch
-git checkout -b guilherme
+git checkout -b andre
 git add .
 git status
-git push origin guilherme
+git push origin andre
 
 ```
 

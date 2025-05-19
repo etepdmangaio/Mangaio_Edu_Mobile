@@ -14,7 +14,8 @@ def _crise_primeiro_reinado():
         A Crise do Primeiro Reinado (1822–1831) foi marcada por instabilidade política, econômica e social.
         A Confederação do Equador surge como uma reação ao autoritarismo de D. Pedro I.
         """)
-        st.video("https://www.youtube.com/watch?v=_n6mLwFB1ss")
+        #st.video("https://www.youtube.com/watch?v=_n6mLwFB1ss")
+        st.markdown("[Assista ao vídeo no YouTube](https://www.youtube.com/watch?v=_n6mLwFB1ss)")
     with abas[1]:
         st.header("Linha do Tempo")
         st.markdown("""
@@ -32,18 +33,17 @@ def _crise_primeiro_reinado():
         """)
 
     with abas[3]:
-
         st.header("Caça-palavras")
-        st.write("🎯 Encontre as palavras relacionadas à Crise do Primeiro Reinado!")
-        st.write("RECIFE", ", OLINDA", ", GOIANA", ", ESCRAVOS", ", JESUS")
+        st.write("🎮 Aqui é onde o jogo vai!")
         html_code = """
         <style>
         table {
             border-collapse: collapse;
             margin-bottom: 10px;
+            background-color: white;
         }
         td {
-            border: 1px solid white;
+            border: 3px solid rgb(41, 222, 216);
             padding: 10px;
             text-align: center;
             font-weight: bold;
@@ -56,14 +56,13 @@ def _crise_primeiro_reinado():
         td.found {
             background-color: lightgreen;
         }
-        p{
-            color: white;
+        p {
+            color: #EDEDED;
         }
-
         button {
             padding: 10px 20px;
             border-radius: 10px;
-            background-color: #4CAF50; /* verde suave */
+            background-color: #4CAF50; 
             color: white;
             border: none;
             font-weight: bold;
@@ -88,26 +87,32 @@ def _crise_primeiro_reinado():
         <p><b>Palavras para encontrar:</b> <span id="word-list"></span></p>
 
         <script>
-        const words = ["RECIFE", "OLINDA", "GOIANA", "ESCRAVOS", "JESUS"];
+        const words = ["REVOLTA", "PERNAMBUCO", "CONFEDERACAO", "FREICANECA", "DOMPEDRO", "SEPARACAO"];
         let foundWords = [];
         let selectedCells = [];
 
         const grid = [
-            ["S", "T", "O", "L", "I", "N", "D", "A", "T"],
-            ["J", "E", "S", "U", "S", "N", "D", "A", "A"],
-            ["J", "G", "O", "I", "A", "N", "A", "T", "P"],
-            ["T", "S", "O", "V", "A", "R", "C", "S", "E"],
-            ["B", "U", "G", "R", "E", "C", "I", "F", "E"]
+            ["C", "O", "N", "F", "E", "D", "E", "R", "A", "C", "A", "O"],
+            ["A", "P", "Q", "S", "T", "L", "V", "A", "I", "T", "S", "S"],
+            ["S", "E", "P", "R", "E", "V", "O", "L", "T", "A", "Z", "E"],
+            ["E", "R", "I", "O", "P", "A", "Q", "W", "D", "S", "A", "P"],
+            ["R", "N", "D", "F", "R", "E", "I", "C", "A", "N", "E", "A"],
+            ["Ç", "A", "S", "Q", "S", "T", "B", "E", "W", "T", "V", "R"],
+            ["X", "M", "O", "L", "Q", "C", "B", "N", "M", "K", "L", "A"],
+            ["A", "B", "A", "S", "N", "M", "L", "P", "Z", "I", "O", "C"],
+            ["T", "U", "L", "S", "I", "L", "B", "T", "J", "E", "A", "A"],
+            ["M", "C", "S", "A", "E", "A", "E", "C", "L", "G", "S", "O"],
+            ["D", "O", "M", "P", "E", "D", "R", "O", "Z", "B", "E", "J"]
         ];
 
         function renderGrid() {
             let html = "<table>";
             for (let i = 0; i < grid.length; i++) {
-            html += "<tr>";
-            for (let j = 0; j < grid[i].length; j++) {
-                html += `<td onclick="selectCell(this, ${i}, ${j})" data-i="${i}" data-j="${j}">${grid[i][j]}</td>`;
-            }
-            html += "</tr>";
+                html += "<tr>";
+                for (let j = 0; j < grid[i].length; j++) {
+                    html += `<td onclick="selectCell(this, ${i}, ${j})" data-i="${i}" data-j="${j}">${grid[i][j]}</td>`;
+                }
+                html += "</tr>";
             }
             html += "</table>";
             document.getElementById("game").innerHTML = html;
@@ -118,11 +123,11 @@ def _crise_primeiro_reinado():
             if (cell.classList.contains("found")) return;
 
             if (cell.classList.contains("selected")) {
-            cell.classList.remove("selected");
-            selectedCells = selectedCells.filter(c => !(c.i === i && c.j === j));
+                cell.classList.remove("selected");
+                selectedCells = selectedCells.filter(c => !(c.i === i && c.j === j));
             } else {
-            cell.classList.add("selected");
-            selectedCells.push({ i, j, letter: grid[i][j], cell });
+                cell.classList.add("selected");
+                selectedCells.push({ i, j, letter: grid[i][j], cell });
             }
         }
 
@@ -132,11 +137,11 @@ def _crise_primeiro_reinado():
             const status = document.getElementById("status");
 
             if (words.includes(upperWord) && !foundWords.includes(upperWord)) {
-            selectedCells.forEach(c => c.cell.classList.add("found"));
-            foundWords.push(upperWord);
-            status.textContent = `✅ Palavra encontrada: ${upperWord}`;
+                selectedCells.forEach(c => c.cell.classList.add("found"));
+                foundWords.push(upperWord);
+                status.textContent = `✅ Palavra encontrada: ${upperWord}`;
             } else {
-            status.textContent = `❌ Palavra inválida: ${upperWord}`;
+                status.textContent = `❌ Palavra inválida: ${upperWord}`;
             }
 
             selectedCells.forEach(c => c.cell.classList.remove("selected"));
@@ -146,8 +151,7 @@ def _crise_primeiro_reinado():
         renderGrid();
         </script>
         """
-        components.html(html_code, height=450)
-
+        components.html(html_code, height=590)
     with abas[4]:
         st.header("Quiz Rápido: A Crise do Primeiro Reinado.")
 
@@ -155,6 +159,7 @@ def _crise_primeiro_reinado():
     {
         "pergunta": "Quem foi uma das principais lideranças intelectuais da Confederação do Equador?",
         "alternativas": [
+            "Não sei",
             "José Bonifácio",
             "Frei Caneca",
             "Dom Pedro I"
@@ -164,6 +169,7 @@ def _crise_primeiro_reinado():
     {
         "pergunta": "Qual foi a principal motivação para o início da Confederação do Equador em 1824?",
         "alternativas": [
+            "Não sei",
             "O descontentamento com a Constituição outorgada por Dom Pedro I",
             "A luta contra a escravidão",
             "A invasão das tropas portuguesas"
@@ -173,6 +179,7 @@ def _crise_primeiro_reinado():
     {
         "pergunta": "Além de Pernambuco, qual outra província apoiou o movimento da Confederação do Equador?",
         "alternativas": [
+            "Não sei",
             "Minas Gerais",
             "Ceará",
             "São Paulo"
@@ -182,6 +189,7 @@ def _crise_primeiro_reinado():
     {
         "pergunta": "O que aconteceu com Frei Caneca após o fracasso da Confederação do Equador?",
         "alternativas": [
+            "Não sei",
             "Fugiu para Portugal",
             "Foi executado por fuzilamento",
             "Tornou-se conselheiro de Dom Pedro I"
@@ -191,6 +199,7 @@ def _crise_primeiro_reinado():
     {
         "pergunta": "Em qual cidade pernambucana se concentrou a maior resistência durante a Confederação do Equador?",
         "alternativas": [
+            "Não sei",
             "Recife",
             "Olinda",
             "Goiana"

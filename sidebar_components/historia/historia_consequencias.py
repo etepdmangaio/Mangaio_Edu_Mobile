@@ -5,9 +5,10 @@ from streamlit_sortables import sort_items
 def _historia_consequencias():
 
     # Tabs com conteúdos variados
+        abas = 0
         abas = st.tabs(["📖 Introdução", "🕒 Linha do Tempo",
                     "👤 Personagens", "📅 Ordem Cronológica", "🧠 Quiz"])
-        
+        #st.rerun()
         with abas[0]:
             st.header("Consequências da Confederação do Equador")
             st.write("""
@@ -22,7 +23,8 @@ def _historia_consequencias():
 
                 O movimento revelou os conflitos entre o projeto centralizador do Império e os anseios de autonomia das elites provinciais, sendo um marco importante nas lutas políticas do período.
             """)
-            st.video("https://www.youtube.com/watch?v=hcYZZ6gYjoM")
+            #st.video("https://www.youtube.com/watch?v=hcYZZ6gYjoM")
+            st.markdown("[Assista ao vídeo no YouTube](https://www.youtube.com/watch?v=hcYZZ6gYjoM)")
         
         with abas[1]:
             st.header("Linha do Tempo das Consequências da Confederação do Equador")
@@ -259,6 +261,7 @@ def _historia_consequencias():
                 {
                     "pergunta": "Qual foi uma das principais consequências políticas da Confederação do Equador?",
                     "alternativas": [
+                        "Não sei",
                         "Adoção do parlamentarismo no Brasil",
                         "Reafirmação do poder centralizado de Dom Pedro I",
                         "Libertação de todos os líderes rebeldes"
@@ -268,6 +271,7 @@ def _historia_consequencias():
                 {
                     "pergunta": "Como o governo imperial respondeu aos movimentos separatistas após a revolta?",
                     "alternativas": [
+                        "Não sei",
                         "Promoveu o diálogo com as lideranças regionais",
                         "Fortaleceu a repressão contra novas revoltas",
                         "Aprovou uma nova constituição liberal"
@@ -277,6 +281,7 @@ def _historia_consequencias():
                 {
                     "pergunta": "Que legado a Confederação do Equador deixou para o Nordeste brasileiro?",
                     "alternativas": [
+                        "Não sei",
                         "Um movimento de apoio ao Império",
                         "Um sentimento de resignação política",
                         "Um espírito revolucionário que influenciou futuras revoltas"
@@ -286,6 +291,7 @@ def _historia_consequencias():
                 {
                     "pergunta": "O que simbolizou a execução de Frei Caneca?",
                     "alternativas": [
+                        "Não sei",
                         "O fim da monarquia brasileira",
                         "A tolerância do Império com a oposição",
                         "A repressão implacável contra a dissidência"
@@ -295,6 +301,7 @@ def _historia_consequencias():
                 {
                     "pergunta": "Após a Confederação do Equador, como ficou o controle do Império sobre as províncias?",
                     "alternativas": [
+                        "Não sei",
                         "Mais descentralizado, com maior autonomia regional",
                         "Inalterado, mantendo o mesmo nível de controle",
                         "Mais centralizado e autoritário"
@@ -302,6 +309,7 @@ def _historia_consequencias():
                     "correta": "Mais centralizado e autoritário"
                 }
             ]
+
             acertos = 0
             erros = 0
 

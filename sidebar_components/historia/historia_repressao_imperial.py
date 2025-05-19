@@ -23,7 +23,9 @@ def _historia_repressao_imperial():
             por enforcamento recusada pelo carrasco, foi fuzilado em 1825. Sua morte simboliza a repressão implacável 
             imposta pelo Império àqueles que buscavam maior autonomia regional.
         """)
-        st.video("https://www.youtube.com/watch?v=nwvyizAG7PY")
+        #st.video("https://www.youtube.com/watch?v=nwvyizAG7PY")
+        #st.markdown("[Assista ao vídeo no YouTube](https://www.youtube.com/watch?v=hcYZZ6gYjoM)")
+        st.markdown("[Assista ao vídeo no Youtube: ](https://www.youtube.com/watch?v=nwvyizAG7PY)")
     
     with abas[1]:
         st.header("Linha do Tempo da Repressão Imperial")
@@ -249,6 +251,7 @@ def _historia_repressao_imperial():
             {
                 "pergunta": "Quem foi o comandante da esquadra naval enviada por Dom Pedro I para reprimir a revolta?",
                 "alternativas": [
+                    "Não sei",
                     "Frei Caneca",
                     "Thomas Cochrane",
                     "José Bonifácio"
@@ -258,6 +261,7 @@ def _historia_repressao_imperial():
             {
                 "pergunta": "Qual foi o destino dos líderes da Confederação do Equador após a derrota?",
                 "alternativas": [
+                    "Não sei",
                     "Foram exilados",
                     "Foram executados",
                     "Foram libertados"
@@ -267,6 +271,7 @@ def _historia_repressao_imperial():
             {
                 "pergunta": "Quem foi o líder intelectual da Confederação do Equador que foi fuzilado em 1825?",
                 "alternativas": [
+                    "Não sei",
                     "José Bonifácio",
                     "Manoel de Carvalho Paes de Andrade",
                     "Frei Caneca"
@@ -276,6 +281,7 @@ def _historia_repressao_imperial():
             {
                 "pergunta": "Qual foi uma das principais consequências da repressão à Confederação do Equador?",
                 "alternativas": [
+                    "Não sei",
                     "Aumento do poder das províncias",
                     "Reafirmação do poder centralizado de Dom Pedro I",
                     "Independência do Brasil"
@@ -285,6 +291,7 @@ def _historia_repressao_imperial():
             {
                 "pergunta": "Como foi a morte de Frei Caneca, líder da revolta?",
                 "alternativas": [
+                    "Não sei",
                     "Foi enforcado após a recusa do carrasco",
                     "Foi fuzilado após tentativa de enforcamento",
                     "Foi decapitado"
@@ -293,24 +300,6 @@ def _historia_repressao_imperial():
             }
         ]
 
-        # for i, p in enumerate(perguntas):
-        #     st.markdown(f"### {i+1}. {p['pergunta']}")
-        #     col1, col2, col3 = st.columns(3)
-
-        #     if f"resposta_repressao_imperial{i}" not in st.session_state:
-        #         st.session_state[f"resposta_repressao_imperial{i}"] = None
-
-        #     for j, alternativa in enumerate(p["alternativas"]):
-        #         col = [col1, col2, col3][j % 3]
-        #         if col.button(f"{alternativa}", key=f"q{i}_a{j}"):
-        #             st.session_state[f"resposta_repressao_imperial{i}"] = alternativa
-
-        #     resposta = st.session_state[f"resposta_repressao_imperial{i}"]
-        #     if resposta:
-        #         if resposta == p["correta"]:
-        #             st.success(f"✅ Boa! Resposta correta: **{resposta}**")
-        #         else:
-        #             st.error(f"❌ Opa! Resposta errada: **{resposta}**\n\n💡 Resposta certa: **{p['correta']}**")
         acertos = 0
         erros = 0
 

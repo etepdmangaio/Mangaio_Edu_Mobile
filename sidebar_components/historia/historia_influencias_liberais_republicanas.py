@@ -17,7 +17,8 @@ def _historia_influe_liber_republ():
             """
             # Exibindo o texto justificado no Streamlit
             st.markdown(html_texto, unsafe_allow_html=True)          
-            st.video("https://www.youtube.com/watch?v=2vfKe0kBJw4")
+            #st.video("https://www.youtube.com/watch?v=2vfKe0kBJw4")
+            st.markdown("[Assita ao vídeo no Youtube: ](https://www.youtube.com/watch?v=2vfKe0kBJw4)")
 
     with abas[1]:
             st.header("Linha do Tempo")
@@ -83,11 +84,32 @@ def _historia_influe_liber_republ():
         td.found {
             background-color: lightgreen;
         }    
-        mark{
-            background-color: rgb(41, 222, 216);
+        button {
+            padding: 10px 20px;
+            border-radius: 10px;
+            background-color: #4CAF50; 
+            color: white;
+            border: none;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+        button:active {
+            background-color: #3e8e41;
+            transform: scale(0.98);
         }
         h5{
-            background-color: limegreen;
+            color: #EDEDED;
+        }
+        mark{
+            color: #EDEDED;
+            background-color: transparent !important;
         }     
         </style>
 
@@ -179,6 +201,7 @@ def _historia_influe_liber_republ():
                 {
                     "pergunta": "Qual o significado da palavra entre a seguir: outorgada?",
                     "alternativas": [
+                         "Não sei",
                         "Incapacitada",
                         "Aprovada",
                         "Inocentada",                        
@@ -190,6 +213,7 @@ def _historia_influe_liber_republ():
                 {
                     "pergunta": "Quais as característica da Constituição de 1824 outorgada por D. Pedro I?",
                     "alternativas": [
+                         "Não sei",
                         "Liberal e republicana",
                         "Descentralizadora e democrática",
                         "Centralizadora e autoritária",
@@ -201,6 +225,7 @@ def _historia_influe_liber_republ():
                 {
                     "pergunta": "Quais os poderes possuia D. Pedro I segundo a Constituição de 1824?",
                     "alternativas": [
+                         "Não sei",
                         "Poder Executivo e Legislativo",
                         "Poder Executivo e Judiciário",
                         "Poder Legislativo e Judiciário",
@@ -212,6 +237,7 @@ def _historia_influe_liber_republ():
                 {
                     "pergunta": "Qual a nação que emprestou dinheiro ao imperador D. Pedro I para que fosse possível comprar armas, navios e contratar mercenários para por um fim à Confederação do Equador liderada por Pernambuco?",
                     "alternativas": [
+                         "Não sei",
                         "Inglaterra",
                         "França",
                         "Alemanha",
@@ -223,6 +249,7 @@ def _historia_influe_liber_republ():
                 {
                     "pergunta": "Quais as duas principais influências que motivaram a Confederação do Equador e o que provocou o estopim (gatilho) da mesma?",
                     "alternativas": [
+                         "Não sei",
                         "O absolutismo, o iluminismo e a Revolução Francesa.",
                         "A Revolução Industrial, a Revolução Francesa e a independência dos Estados Unidos.",
                         "A pobreza do população, a desigualdade política e os altos impostos.",

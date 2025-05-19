@@ -70,6 +70,7 @@ def _insatisfacao_nordeste():
             {
                 "pergunta": "Quem foi uma das principais lideranças intelectuais da Confederação do Equador?",
                 "alternativas": [
+                    "Não sei",
                     "José Bonifácio",
                     "Frei Caneca",
                     "Dom Pedro I"
@@ -79,6 +80,7 @@ def _insatisfacao_nordeste():
             {
                 "pergunta": "Qual foi a principal motivação para o início da Confederação do Equador em 1824?",
                 "alternativas": [
+                    "Não sei",
                     "O descontentamento com a Constituição outorgada por Dom Pedro I",
                     "A luta contra a escravidão",
                     "A invasão das tropas portuguesas"
@@ -88,6 +90,7 @@ def _insatisfacao_nordeste():
             {
                 "pergunta": "Além de Pernambuco, qual outra província apoiou o movimento da Confederação do Equador?",
                 "alternativas": [
+                    "Não sei",
                     "Minas Gerais",
                     "Ceará",
                     "São Paulo"
@@ -97,6 +100,7 @@ def _insatisfacao_nordeste():
             {
                 "pergunta": "O que aconteceu com Frei Caneca após o fracasso da Confederação do Equador?",
                 "alternativas": [
+                    "Não sei",
                     "Fugiu para Portugal",
                     "Foi executado por fuzilamento",
                     "Tornou-se conselheiro de Dom Pedro I"
@@ -106,6 +110,7 @@ def _insatisfacao_nordeste():
             {
                 "pergunta": "Em qual cidade pernambucana se concentrou a maior resistência durante a Confederação do Equador?",
                 "alternativas": [
+                    "Não sei",
                     "Recife",
                     "Olinda",
                     "Goiana"

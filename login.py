@@ -3,7 +3,8 @@ import streamlit as st
 def verificar_login(usuario, senha):
     usuarios = {
         "admin": "123",
-        "usuario": "123"
+        "usuario": "123",
+        
     }
     return usuario in usuarios and usuarios[usuario] == senha
 

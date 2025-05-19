@@ -8,12 +8,14 @@ from sidebar_components.historia.historia_repressao_imperial import _historia_re
 from sidebar_components.historia.historia_consequencias import _historia_consequencias
 from sidebar_components.historia.historia_influencias_liberais_republicanas import _historia_influe_liber_republ
 from sidebar_components.historia.historia_insatisfacao_nordeste import _insatisfacao_nordeste
+from sidebar_components.dashboard.dashboard_todos import _dashboard_todos
+from sidebar_components.dashboard.dashboard_usuario import _dashboard_usuario
 
 
 def pagina_app():
     st.set_page_config(page_title="MangaioEdu", layout="wide")
 
-    st.sidebar.title("📚 Mangaio - "
+    st.title("📚 Mangaio - "
                      "Uma Plataforma Educacional Colaborativa")
     st.success(f"Bem-vindo, {st.session_state.get('usuario', '')}!")
 
@@ -22,36 +24,92 @@ def pagina_app():
         st.session_state["pagina"] = "login"
         st.rerun()
 
-    with st.sidebar.expander("📖 História", expanded=True):
-        # st.markdown("### Subtemas")
-        subtema_escolhido = st.radio("Escolha uma trilha: ", [
+    with st.expander("📖 História", expanded=False):
+        subtema_escolhido_historia = st.selectbox("Escolha uma trilha: ", (
             "Crise do Primeiro Reinado", "Insatisfação do Nordeste", "Influências Liberais e Republicanas",
-            "Deflagração da Revolta (1824)", "Repressão Imperial", "Consequências"], key="subtema")
-        # "Influências Liberais e Republicanas"
-    # st.write("Subtema selecionado:", subtema_escolhido)
+            "Deflagração da Revolta (1824)", "Repressão Imperial", "Consequências"), key="subtema")
+        
+        if subtema_escolhido_historia == "Crise do Primeiro Reinado":
+            #dash = " "
+            _crise_primeiro_reinado()
+            
+        
+        if subtema_escolhido_historia == "Insatisfação do Nordeste":
+            #dash = " "
+            _insatisfacao_nordeste()
 
-    sidebar_geografia()
 
-    sidebar_matematica()
+        if subtema_escolhido_historia == "Influências Liberais e Republicanas":
+            #dash = " "
+            _historia_influe_liber_republ()
 
-    sidebar_logica_programacao()
 
-    if subtema_escolhido == "Crise do Primeiro Reinado":
-        _crise_primeiro_reinado()
+        if subtema_escolhido_historia == "Deflagração da Revolta (1824)":
+            #dash = " "
+            _historia_deflagracao_revolta_1824()
 
-    if subtema_escolhido == "Insatisfação do Nordeste":
-        _insatisfacao_nordeste()
-        #pass
 
-    if subtema_escolhido == "Influências Liberais e Republicanas":
-        _historia_influe_liber_republ()
-        pass
+        if subtema_escolhido_historia == "Repressão Imperial":
+            #dash = " "
+            _historia_repressao_imperial()
 
-    if subtema_escolhido == "Deflagração da Revolta (1824)":
-        _historia_deflagracao_revolta_1824()
 
-    if subtema_escolhido == "Repressão Imperial":
-        _historia_repressao_imperial()
+        if subtema_escolhido_historia == "Consequências":
+            #dash = " "
+            _historia_consequencias()
 
-    if subtema_escolhido == "Consequências":
-        _historia_consequencias()
+        
+    with st.expander("📖 Geografia", expanded=False):
+        # st.markdown("### Subtemas")
+        subtema_escolhido_geografia = st.selectbox("Selecione uma cor: ", ("Climas do Brasil",
+            "Relevo", "Urbanização", "Cartografia"))
+             
+        sidebar_geografia()
+
+    with st.expander("📖 Matemática", expanded=False):
+        # st.markdown("### Subtemas")
+        subtema_escolhido_matematica = st.selectbox("Selecione uma cor: ", ("Álgebra",
+            "Geometria",
+            "Probabilidade"))
+        sidebar_matematica()
+
+    with st.expander("📖 Lógica de Programação", expanded=False):
+        # st.markdown("### Subtemas")
+        subtema_escolhido_logica =st.selectbox("Selecione uma cor: ", ("O que é Lógica?",
+            "Python",
+            "Variáveis",
+            "Estrutura de decisão",
+            "Estrutura de controle"))
+        sidebar_logica_programacao()
+
+    with st.expander("📖 Dashboards", expanded=False):
+        # st.markdown("### Subtemas")
+       dash = st.selectbox("Selecione um Dashboard: ", ("Todos", "Usuario"))
+
+       if dash == "Todos":
+        _dashboard_todos()
+
+       if dash == "Usuario":
+        _dashboard_usuario()
+
+ 
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+    
+
+
+
+

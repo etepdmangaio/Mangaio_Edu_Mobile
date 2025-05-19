@@ -21,7 +21,8 @@ def _historia_deflagracao_revolta_1824():
             Rio Grande do Norte e Paraíba aderiram ao movimento, evidenciando o descontentamento regional 
             com as decisões do governo de D. Pedro I e a busca por maior autonomia política.
             """)
-        st.video("https://www.youtube.com/watch?v=2vfKe0kBJw4")
+        #st.video("https://www.youtube.com/watch?v=2vfKe0kBJw4")
+        st.markdown("[Assista ao vídeo no YouTube](https://www.youtube.com/watch?v=2vfKe0kBJw4)")
     
     with abas[1]:
         st.header("Linha do Tempo")
@@ -95,17 +96,16 @@ def _historia_deflagracao_revolta_1824():
 
     with abas[3]:
         st.header("Caça-palavras")
-        st.write("🎯 Encontre as palavras relacionadas à Revolta de 1824!")
-        st.write("REVOLTA, PERNAMBUCO, CONFEDERACAO, FREICANECA, DOMPEDRO, SEPARACAO")
+        st.write("🎮 Aqui é onde o jogo vai!")
         html_code = """
         <style>
         table {
             border-collapse: collapse;
             margin-bottom: 10px;
-            
+            background-color: white;
         }
         td {
-            border: 1px solid white;
+            border: 3px solid rgb(41, 222, 216);
             padding: 10px;
             text-align: center;
             font-weight: bold;
@@ -119,12 +119,12 @@ def _historia_deflagracao_revolta_1824():
             background-color: lightgreen;
         }
         p {
-            color: white;
+            color: #EDEDED;
         }
         button {
             padding: 10px 20px;
             border-radius: 10px;
-            background-color: #4CAF50; /* verde suave */
+            background-color: #4CAF50; 
             color: white;
             border: none;
             font-weight: bold;
@@ -223,6 +223,7 @@ def _historia_deflagracao_revolta_1824():
             {
                 "pergunta": "Quem declarou a separação da província de Pernambuco em 1824?",
                 "alternativas": [
+                    "Não sei",
                     "Frei Caneca",
                     "Dom Pedro I",
                     "Manoel de Carvalho Paes de Andrade"
@@ -232,6 +233,7 @@ def _historia_deflagracao_revolta_1824():
             {
                 "pergunta": "Qual era o principal objetivo da Confederação do Equador?",
                 "alternativas": [
+                    "Não sei",
                     "Separar o Brasil de Portugal",
                     "Lutar contra o autoritarismo imperial",
                     "Fortalecer o poder do imperador"
@@ -241,6 +243,7 @@ def _historia_deflagracao_revolta_1824():
             {
                 "pergunta": "Qual destas províncias aderiu à revolta de 1824?",
                 "alternativas": [
+                    "Não sei",
                     "Minas Gerais",
                     "Rio de Janeiro",
                     "Ceará"
@@ -250,6 +253,7 @@ def _historia_deflagracao_revolta_1824():
             {
                 "pergunta": "Qual foi uma das consequências da Confederação do Equador?",
                 "alternativas": [
+                    "Não sei",
                     "Criação de uma nova Constituição",
                     "Repressão violenta e execução de líderes",
                     "Independência de Pernambuco"
@@ -259,6 +263,7 @@ def _historia_deflagracao_revolta_1824():
             {
                 "pergunta": "Quem foi uma figura importante no movimento, conhecido por sua atuação intelectual e política?",
                 "alternativas": [
+                    "Não sei",
                     "José Bonifácio",
                     "Frei Caneca",
                     "Pedro II"
@@ -267,24 +272,6 @@ def _historia_deflagracao_revolta_1824():
             }
         ]
 
-        # for i, p in enumerate(perguntas):
-        #     st.subheader(f"{i+1}. {p['pergunta']}")
-        #     col1, col2, col3 = st.columns(3)
-
-        #     if f"resposta_deflagracao_revolta{i}" not in st.session_state:
-        #         st.session_state[f"resposta_deflagracao_revolta{i}"] = None
-
-        #     for j, alternativa in enumerate(p["alternativas"]):
-        #         col = [col1, col2, col3][j % 3]
-        #         if col.button(alternativa, key=f"q{i}_a{j}"):
-        #             st.session_state[f"resposta_deflagracao_revolta{i}"] = alternativa
-
-        #     resposta = st.session_state[f"resposta_deflagracao_revolta{i}"]
-        #     if resposta:
-        #         if resposta == p["correta"]:
-        #             st.success(f"✅ Resposta correta: {resposta}")
-        #         else:
-        #             st.error(f"❌ Resposta incorreta: {resposta}. Resposta certa: **{p['correta']}**")
         acertos = 0
         erros = 0
 

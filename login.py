@@ -9,7 +9,7 @@ def verificar_login(usuario, senha):
     return usuario in usuarios and usuarios[usuario] == senha
 
 def pagina_login():
-    st.title("MangaioEdu")
+    st.title(" 📖 MangaioEdu")
 
     with st.form("form_login"):
         usuario = st.text_input("Usuário").strip()

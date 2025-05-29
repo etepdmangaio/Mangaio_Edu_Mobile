@@ -1,23 +1,31 @@
+
 import sys
 import os
 import streamlit as st
-from login import pagina_login
-from app1 import pagina_app
+from controllers.login_controller import LoginController
+from views.principal import Principal
+
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 def main():
-    if "pagina" not in st.session_state:
-        st.session_state["pagina"] = "login"
+    # Inicializa estado de sessão
+    if "logged_in" not in st.session_state:
+        st.session_state["logged_in"] = False
+        st.session_state["username"] = None
+        st.session_state["role"] = None
+        st.session_state["pagina"] = "login"  # Definir página inicial como login
 
+    # Gerenciar navegação
     if st.session_state["pagina"] == "login":
-        pagina_login()
-        
-    elif st.session_state["pagina"] == "app":
-        pagina_app()
+        LoginController()
+        if st.session_state["logged_in"]:
+            st.session_state["pagina"] = "principal"
+            st.rerun()
+
+    elif st.session_state["pagina"] == "principal":
+        Principal()
+
 
 if __name__ == "__main__":
     main()
-        
-
-    

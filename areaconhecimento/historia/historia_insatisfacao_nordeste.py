@@ -2,9 +2,16 @@ import streamlit as st
 import streamlit.components.v1 as components
 from streamlit_sortables import sort_items
 import pydeck as pdk
+from controllers.quiz_controller import QuizController
+from models.database import Database
 
 
-def _insatisfacao_nordeste():
+def _insatisfacao_nordeste(username):
+    db = Database()
+    id_usuario = db.verificar_usuario_id(username)
+    qc = QuizController(id_usuario)    
+    username = username
+    categoria = 'Insatisfação Nordeste'     
 
     abas = st.tabs(["📖 Introdução", "👤 Personagens", "🧠 Quiz"])
 
@@ -131,15 +138,30 @@ def _insatisfacao_nordeste():
             )
 
         # Verificação e contagem (fora do loop de exibição das perguntas)
+        # if st.button("Ver resultado"):
+        #     for i, p in enumerate(perguntas):
+        #         resposta = st.session_state.get(
+        #             f"resposta_deflagracao_revolta{i}")
+        #         if resposta == p["correta"]:
+        #             acertos += 1
+        #         else:
+        #             erros += 1
+
+        #     st.markdown("---")
+        #     st.success(f"✅ Total de acertos: **{acertos}**")
+        #     st.error(f"❌ Total de erros: **{erros}**")
         if st.button("Ver resultado"):
             for i, p in enumerate(perguntas):
-                resposta = st.session_state.get(
-                    f"resposta_deflagracao_revolta{i}")
+                resposta = st.session_state.get(f"resposta_deflagracao_revolta{i}")
                 if resposta == p["correta"]:
+                    # print('Acertos: ',id_usuario, 1, resposta, 1, categoria)                        
+                    qc.cadastrar_respostas(id_usuario, 1, p["pergunta"], resposta, 1, categoria)
                     acertos += 1
                 else:
+                    #print('Erros: ',id_usuario, 1, resposta, 0, categoria)
+                    qc.cadastrar_respostas(id_usuario, 1, p["pergunta"], resposta, 0, categoria)
                     erros += 1
 
             st.markdown("---")
             st.success(f"✅ Total de acertos: **{acertos}**")
-            st.error(f"❌ Total de erros: **{erros}**")
+            st.error(f"❌ Total de erros: **{erros}**")         

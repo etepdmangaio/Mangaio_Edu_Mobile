@@ -14,11 +14,14 @@ class Principal:
         self.db=Database()
         self.exibir_pagina()
 
+
     def exibir_pagina(self):
         """Renderiza a interface principal"""
 
         st.title("📚 Mangaio - Uma Plataforma Educacional Colaborativa")
         st.success(f"Bem-vindo, {st.session_state.get('username', '')}!")
+        username = st.session_state.get('username')
+        #print('Usuario: ', username)
 
         if st.button("Logout"):
             st.session_state.clear()
@@ -30,35 +33,10 @@ class Principal:
         self.exibir_matematica()
         self.exibir_logica_programacao()
         self.exibir_dashboard()
-
-        # Se o usuário for admin, exibir formulário de cadastro
-        if st.session_state.get("username") == "admin":
+        if username == "admin":
+            #print('Usuario admin: ', username)
             self.exibir_cadastro_pergunta()
 
-    def exibir_cadastro_pergunta(self):
-        """Permite que administradores cadastrem novas perguntas"""
-        with st.expander("Cadastrar Nova Questão 📌", expanded=False):
-            area_conhecimento = st.selectbox("Área de Conhecimento", ["História", "Geografia"])
-            categoria = st.selectbox("Categoria", ["Crise do Primeiro Reinado",
-                        "Insatisfação do Nordeste",
-                        "Influências Liberais e Republicanas",
-                        "Deflagração da Revolta (1824)",
-                        "Repressão Imperial",
-                        "Consequências"] )
-            pergunta = st.text_area("Digite a Pergunta")
-            opcao1 = st.text_input("Opção 1")
-            opcao2 = st.text_input("Opção 2")
-            opcao3 = st.text_input("Opção 3")
-            opcao4 = st.text_input("Opção 4")
-            resposta_correta = st.selectbox("Resposta Correta", [opcao1, opcao2, opcao3, opcao4])
-
-            if st.button("Cadastrar Questão"):
-                sucesso = self.db.cadastrar_pergunta(area_conhecimento, categoria, pergunta, [opcao1, opcao2, opcao3, opcao4], resposta_correta)
-                if sucesso:
-                    st.success("Questão cadastrada com sucesso!")
-                    
-                else:
-                    st.error("Erro ao cadastrar questão. Verifique os dados.")
             
 
     def exibir_historia(self):
@@ -77,22 +55,22 @@ class Principal:
             )
 
             if subtema_escolhido_historia == "Crise do Primeiro Reinado":
-                _crise_primeiro_reinado()
+                _crise_primeiro_reinado(st.session_state.get('username'))
 
             elif subtema_escolhido_historia == "Insatisfação do Nordeste":
-                _insatisfacao_nordeste()
+                _insatisfacao_nordeste(st.session_state.get('username'))
 
             elif subtema_escolhido_historia == "Influências Liberais e Republicanas":
-                _historia_influe_liber_republ()
+                _historia_influe_liber_republ(st.session_state.get('username'))
 
             elif subtema_escolhido_historia == "Deflagração da Revolta (1824)":
-                _historia_deflagracao_revolta_1824()
+                _historia_deflagracao_revolta_1824(st.session_state.get('username'))
 
             elif subtema_escolhido_historia == "Repressão Imperial":
-                _historia_repressao_imperial()
+                _historia_repressao_imperial(st.session_state.get('username'))
 
             elif subtema_escolhido_historia == "Consequências":
-                _historia_consequencias()
+                _historia_consequencias(st.session_state.get('username'))
                 
 
     def exibir_geografia(self):
@@ -139,4 +117,29 @@ class Principal:
                     "Todos", "Usuario"
                 ]
             )
+
+    def exibir_cadastro_pergunta(self):
+        """Permite que administradores cadastrem novas perguntas"""
+        with st.expander("Cadastrar Nova Questão 📌", expanded=False):
+            area_conhecimento = st.selectbox("Área de Conhecimento", ["História", "Geografia"])
+            categoria = st.selectbox("Categoria", ["Crise do Primeiro Reinado",
+                        "Insatisfação do Nordeste",
+                        "Influências Liberais e Republicanas",
+                        "Deflagração da Revolta (1824)",
+                        "Repressão Imperial",
+                        "Consequências"] )
+            pergunta = st.text_area("Digite a Pergunta")
+            opcao1 = st.text_input("Opção 1")
+            opcao2 = st.text_input("Opção 2")
+            opcao3 = st.text_input("Opção 3")
+            opcao4 = st.text_input("Opção 4")
+            resposta_correta = st.selectbox("Resposta Correta", [opcao1, opcao2, opcao3, opcao4])
+
+            if st.button("Cadastrar Questão"):
+                sucesso = self.db.cadastrar_pergunta(area_conhecimento, categoria, pergunta, [opcao1, opcao2, opcao3, opcao4], resposta_correta)
+                if sucesso:
+                    st.success("Questão cadastrada com sucesso!")
+                    
+                else:
+                    st.error("Erro ao cadastrar questão. Verifique os dados.")
 

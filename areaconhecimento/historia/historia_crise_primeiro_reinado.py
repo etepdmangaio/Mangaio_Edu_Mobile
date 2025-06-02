@@ -1,8 +1,17 @@
 import streamlit as st
 import streamlit.components.v1 as components
 from controllers.quiz_controller import QuizController
+from models.database import Database
 
-def _crise_primeiro_reinado():
+def _crise_primeiro_reinado(username):
+
+    db = Database()
+    id_usuario = db.verificar_usuario_id(username)
+    qc = QuizController(id_usuario)
+    username = username
+    categoria = 'Crise Primeiro Reinado'
+    
+        
     # Tabs com conteúdos variados
     abas = st.tabs(["📖 Introdução", " 📖 Caça Palavras", "🧠 Quiz"])
 
@@ -218,18 +227,16 @@ def _crise_primeiro_reinado():
             for i, p in enumerate(perguntas):
                 resposta = st.session_state.get(f"resposta_deflagracao_revolta{i}")
                 if resposta == p["correta"]:
+                    qc.cadastrar_respostas(id_usuario, 1, p["pergunta"], resposta, 1, categoria)
+                    #print(id_usuario, 1, resposta, 1, categoria)
                     acertos += 1
                 else:
+                    #print('Erros: ',id_usuario, 1, resposta, 0, categoria)
+                    qc.cadastrar_respostas(id_usuario, 1, p["pergunta"],resposta, 0, categoria)
                     erros += 1
 
+            
             st.markdown("---")
             st.success(f"✅ Total de acertos: **{acertos}**")
             st.error(f"❌ Total de erros: **{erros}**")
-    # with abas[3]:
-    #     st.subheader("Quiz - Crise Primeiro Reinado.")
 
-    # # Verifica se o usuário está logado antes de carregar o quiz
-    #     if "logged_in" in st.session_state and st.session_state.logged_in:
-    #         QuizController(st.session_state["username"])
-    #     else:
-    #         st.warning("Faça login para acessar o quiz.")

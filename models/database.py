@@ -38,8 +38,10 @@ class Database:
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             usuario_id INTEGER,
             quiz_id INTEGER,
+            pergunta TEXT,
             resposta_escolhida TEXT,
             acertou BOOLEAN,
+            categoria TEXT,                
             FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
             FOREIGN KEY (quiz_id) REFERENCES quiz(id)
         )
@@ -65,6 +67,18 @@ class Database:
         if user and bcrypt.checkpw(password.encode(), user[0]):
             return True
         return False
+    
+    def verificar_usuario_id(self,username):
+        """Verifica se o usuário existe e se a senha está correta"""
+        #print('Verificar_usuario_id: ', username)
+        self.cursor.execute("SELECT id FROM usuarios WHERE username = ?", (username,))
+        user = self.cursor.fetchone()
+        
+        if user:
+            user_id = user[0]
+            #print('Id_usuario: ', user_id)
+            return user_id
+        return False
 
 
     def cadastrar_pergunta(self, area_conhecimento, categoria, pergunta, opcoes, resposta_correta):
@@ -83,13 +97,13 @@ class Database:
         self.cursor.execute("SELECT area_conhecimento, categoria, pergunta, opcao1, opcao2, opcao3, opcao4 FROM quiz WHERE area_conhecimento = ? AND categoria = ?", (area_conhecimento, categoria))
         return self.cursor.fetchall()
 
-    def registrar_resposta(self, usuario_id, quiz_id, resposta):
+    def registrar_resposta(self, usuario_id, quiz_id, pergunta, resposta, acertou, categoria):
         """Armazena a resposta do usuário e verifica se está correta"""
-        self.cursor.execute("SELECT resposta_correta FROM quiz WHERE id = ?", (quiz_id,))
-        resposta_correta = self.cursor.fetchone()
+        # self.cursor.execute("SELECT resposta_correta FROM quiz WHERE id = ?", (quiz_id,))
+        # resposta_correta = self.cursor.fetchone()
 
-        acertou = resposta_correta and resposta == resposta_correta[0]
-        
-        self.cursor.execute("INSERT INTO respostas_usuario (usuario_id, quiz_id, resposta_escolhida, acertou) VALUES (?, ?, ?, ?)",
-                            (usuario_id, quiz_id, resposta, acertou))
+        # acertou = resposta_correta and resposta == resposta_correta[0]
+        #print('Registrar_resposta: ', usuario_id, quiz_id, pergunta, resposta, acertou, categoria)
+        self.cursor.execute("INSERT INTO respostas_usuario (usuario_id, quiz_id, pergunta, resposta_escolhida, acertou, categoria) VALUES (?, ?, ?, ?, ?, ?)",
+                            (usuario_id, quiz_id, pergunta, resposta, acertou, categoria))
         self.conn.commit()

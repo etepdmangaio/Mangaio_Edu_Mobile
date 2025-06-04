@@ -103,7 +103,7 @@ def _historia_deflagracao_revolta_1824(username):
 
     with abas[2]:
         st.header("Caça-palavras")
-        st.write("🎮 Aqui é onde o jogo vai!")
+        st.write("🎯 Encontre as palavras relacionadas à Revolta de 1824!")
         html_code = """
         <style>
         table {
@@ -125,13 +125,17 @@ def _historia_deflagracao_revolta_1824(username):
         td.found {
             background-color: lightgreen;
         }
-        p {
-            color: #EDEDED;
+        p, span, h5, mark, b {
+            color: #4CAF50;
+            background-color: transparent !important;
+        }
+        mark {
+            background-color: transparent !important;
         }
         button {
             padding: 10px 20px;
             border-radius: 10px;
-            background-color: #4CAF50; 
+            background-color: #4CAF50; /* verde suave */
             color: white;
             border: none;
             font-weight: bold;
@@ -201,18 +205,41 @@ def _historia_deflagracao_revolta_1824(username):
         }
 
         function checkWord() {
-            const formedWord = selectedCells.map(c => c.letter).join("");
-            const upperWord = formedWord.toUpperCase();
-            const status = document.getElementById("status");
-
-            if (words.includes(upperWord) && !foundWords.includes(upperWord)) {
-                selectedCells.forEach(c => c.cell.classList.add("found"));
-                foundWords.push(upperWord);
-                status.textContent = `✅ Palavra encontrada: ${upperWord}`;
-            } else {
-                status.textContent = `❌ Palavra inválida: ${upperWord}`;
+            if (selectedCells.length < 2) {
+                document.getElementById("status").textContent = "❌ Selecione pelo menos duas letras em sequência.";
+                clearSelection();
+                return;
             }
 
+            // Verifica direção entre os dois primeiros pontos
+            const dx = selectedCells[1].i - selectedCells[0].i;
+            const dy = selectedCells[1].j - selectedCells[0].j;
+
+            // Valida se todos os próximos seguem essa mesma direção
+            for (let k = 2; k < selectedCells.length; k++) {
+                const currentDx = selectedCells[k].i - selectedCells[k - 1].i;
+                const currentDy = selectedCells[k].j - selectedCells[k - 1].j;
+                if (currentDx !== dx || currentDy !== dy) {
+                    document.getElementById("status").textContent = "❌ As letras precisam estar em sequência reta.";
+                    clearSelection();
+                    return;
+                }
+            }
+
+            const formedWord = selectedCells.map(c => c.letter).join("").toUpperCase();
+
+            if (words.includes(formedWord) && !foundWords.includes(formedWord)) {
+                selectedCells.forEach(c => c.cell.classList.add("found"));
+                foundWords.push(formedWord);
+                document.getElementById("status").textContent = `✅ Palavra encontrada: ${formedWord}`;
+            } else {
+                document.getElementById("status").textContent = `❌ Palavra inválida: ${formedWord}`;
+            }
+
+            clearSelection();
+        }
+
+        function clearSelection() {
             selectedCells.forEach(c => c.cell.classList.remove("selected"));
             selectedCells = [];
         }
@@ -220,7 +247,7 @@ def _historia_deflagracao_revolta_1824(username):
         renderGrid();
         </script>
         """
-        components.html(html_code, height=590)
+        components.html(html_code, height=600)
     
 
     with abas[3]:

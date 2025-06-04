@@ -39,7 +39,7 @@ def _historia_consequencias(username):
                 - **Década de 1830**: **Legado revolucionário no Nordeste**: O movimento da Confederação do Equador deixou um legado importante, com a memória das lutas por maior autonomia no Nordeste, o que inspirou outras revoltas e movimentos de caráter regionalista ao longo do século XIX, como a Revolta dos Malês e outras insurreições contra o domínio imperial.
             """)
 
-
+            
             st.markdown("[Assista ao vídeo no YouTube](https://www.youtube.com/watch?v=hcYZZ6gYjoM)")
         
                

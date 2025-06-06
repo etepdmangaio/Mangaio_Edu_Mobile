@@ -6,6 +6,7 @@ from areaconhecimento.historia.historia_deflagracao_revolta_1824 import _histori
 from areaconhecimento.historia.historia_influencias_liberais_republicanas import _historia_influe_liber_republ
 from areaconhecimento.historia.historia_repressao_imperial import _historia_repressao_imperial
 from models.database import Database
+from views.dashboard import dashboard_todos, dashboard_usuario
 
 class Principal:
     def __init__(self):
@@ -117,6 +118,10 @@ class Principal:
                     "Todos", "Usuario"
                 ]
             )
+            if sidebar_dashboard == "Todos":
+                dashboard_todos()
+            elif sidebar_dashboard == "Usuario":
+                dashboard_usuario()
 
     def exibir_cadastro_pergunta(self):
         """Permite que administradores cadastrem novas perguntas"""

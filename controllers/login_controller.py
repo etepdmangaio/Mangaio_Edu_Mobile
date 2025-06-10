@@ -1,5 +1,6 @@
 from models.database import Database
 from views.login_view import LoginView
+from utils.validacao import email_valido  # importando validação
 import streamlit as st
 
 class LoginController:
@@ -30,12 +31,14 @@ class LoginController:
                 st.rerun()
             else:
                 st.error("Usuário ou senha incorretos.")
+
         if self.view.register_button:
-            if self.db.cadastrar_usuario(self.view.username, self.view.email, self.view.password):
+            if not email_valido(self.view.email):
+                st.error("E-mail inválido. Por favor, insira um e-mail válido.")
+            elif self.db.cadastrar_usuario(self.view.username, self.view.email, self.view.password):
                 st.success("Usuário cadastrado com sucesso! Agora faça login.")
             else:
                 st.error("Usuário já existe ou erro no cadastro.")
-
 
     def exibir_pagina_usuario(self):
         """Exibe página pós-login com base na permissão"""

@@ -110,13 +110,15 @@ def _historia_influe_liber_republ(username):
         html_code = """
         <style>
         table {
+            table-layout: fixed;
             border-collapse: collapse;
             margin-bottom: 10px;
             background-color: white;
-        }
+        }      
         td {
-            border: 3px solid rgb(41, 222, 216);
-            padding: 10px;
+            border: 2px solid rgb(41, 222, 216);
+            padding: 6.8px;
+            font-size: 14px;
             text-align: center;
             font-weight: bold;
             cursor: pointer;
@@ -163,29 +165,22 @@ def _historia_influe_liber_republ(username):
         <p><b>Palavras para encontrar:</b> <span id="word-list"></span></p>
 
         <script>
-        const words = ["MOVIMENTO", "LIBERAIS", "SEPARATISTA", "AUTORITARISMO", "DESCENTRALIZADO", "REVOLUCAO", "REPRESSAO", "NORDESTE", "VIOLENCIA", "COLONIAS", "OUTORGADA", "IMPOSICAO", "CONSTITUICAO, INFLUENCIAS", "REPUBLICANAS"];
+        const words = ["MOVIMENTO", "REVOLUCAO", "LIBERAIS", "REPRESSAO", "VIOLENCIA"];
         let foundWords = [];
         let selectedCells = [];
 
         const grid = [
-            ["M", "T", "L", "I", "B", "E", "R", "I", "S", "E", "O", "A", "I", "R", "E", "A", "M", "U"],
-            ["O", "A", "T", "E", "R", "G", "A", "D", "A", "A", "A", "L", "A", "E", "E", "O", "U", "A"],
-            ["V", "A", "U", "V", "O", "O", "L", "E", "N", "C", "C", "A", "S", "P", "A", "U", "A", "I"],
-            ["I", "N", "F", "T", "U", "T", "O", "R", "G", "O", "I", "A", "L", "R", "O", "T", "N", "C"],
-            ["M", "U", "O", "C", "O", "O", "N", "I", "U", "A", "S", "L", "I", "E", "S", "O", "E", "C"],
-            ["E", "E", "R", "E", "O", "R", "M", "R", "L", "A", "O", "D", "I", "S", "A", "R", "L", "O"],
-            ["N", "T", "E", "C", "R", "N", "I", "I", "F", "A", "P", "T", "E", "S", "T", "G", "A", "L"],
-            ["T", "S", "V", "A", "G", "A", "S", "R", "N", "A", "M", "L", "P", "A", "I", "D", "N", "O"],
-            ["O", "E", "O", "O", "A", "S", "S", "T", "A", "R", "I", "A", "T", "O", "T", "A", "I", "N"],
-            ["A", "D", "L", "P", "D", "S", "S", "K", "I", "R", "T", "A", "U", "I", "S", "O", "I", "I"],
-            ["C", "R", "U", "P", "E", "P", "A", "R", "A", "T", "I", "S", "T", "A", "S", "V", "I", "A"],
-            ["F", "O", "C", "P", "L", "R", "M", "O", "I", "N", "U", "S", "U", "E", "C", "E", "A", "S"],
-            ["A", "N", "A", "V", "I", "O", "L", "E", "N", "C", "I", "I", "M", "S", "O", "R", "M", "I"],
-            ["C", "R", "O", "P", "A", "E", "S", "S", "E", "S", "T", "A", "C", "O", "S", "T", "I", "A"],
-            ["F", "O", "I", "V", "I", "O", "L", "E", "N", "C", "P", "A", "N", "A", "C", "S", "E", "D"],
-            ["H", "I", "H", "O", "D", "A", "Z", "I", "L", "A", "R", "T", "N", "E", "O", "S", "A", "O"],
-            ["F", "W", "I", "O", "D", "A", "Z", "I", "L", "A", "R", "T", "N", "E", "C", "S", "E", "D"],
-            ["B", "S", "E", "P", "A", "R", "A", "T", "I", "S", "T", "A", "T", "A", "O", "T", "I", "S"]
+            ["M", "O", "V", "I", "M", "E", "N", "T", "O", "C", "A", "O"],
+            ["A", "I", "Q", "S", "T", "L", "V", "A", "I", "T", "S", "R"],
+            ["S", "M", "R", "E", "V", "O", "L", "U", "C", "A", "O", "E"],
+            ["E", "P", "I", "O", "P", "A", "Q", "W", "D", "S", "A", "P"],
+            ["R", "O", "D", "F", "R", "E", "I", "C", "A", "N", "E", "R"],
+            ["Ç", "S", "S", "Q", "S", "T", "B", "E", "W", "T", "V", "E"],
+            ["X", "I", "O", "L", "Q", "C", "B", "N", "M", "K", "L", "S"],
+            ["A", "C", "A", "S", "N", "M", "L", "P", "Z", "I", "O", "S"],
+            ["T", "A", "V", "I", "O", "L", "E", "N", "C", "I", "A", "A"],
+            ["M", "O", "S", "A", "E", "A", "E", "C", "L", "G", "S", "O"],
+            ["L", "I", "B", "E", "R", "A", "I", "S", "Z", "B", "E", "J"]
         ]            
         
         function renderGrid() {

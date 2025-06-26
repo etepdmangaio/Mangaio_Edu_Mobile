@@ -13,7 +13,7 @@ def _historia_consequencias(username):
 
     # Tabs com conteúdos variados
         abas = 0
-        abas = st.tabs(["📖 Introdução", "👤 Personagens", "📅 Ordem Cronológica", "🧠 Quiz"])
+        abas = st.tabs(["📖 Introdução", "👤 Personagens", "📅 Conexões Históricas", "🧠 Quiz"])
         #st.rerun()
         with abas[0]:
             st.header("Consequências da Confederação do Equador")
@@ -123,19 +123,29 @@ def _historia_consequencias(username):
         
         with abas[2]:
             st.header("🎯 Associe os Conceitos às Consequências")
-            st.write("Arraste cada consequência para o personagem ou ideia correta e clique em **Verificar Respostas**.")
+            st.write("📱 Toque em uma consequência e depois toque no destino correto. Depois clique em **Verificar Respostas**.")
 
             html_code = """
             <style>
                 .drag-container {
                     display: flex;
-                    justify-content: space-between;
+                    flex-direction: column;
+                    gap: 20px;
                     margin-top: 20px;
                     font-family: Arial, sans-serif;
                 }
 
+                .lists-wrapper {
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    gap: 15px;
+                }
+
                 .drag-list, .drop-list {
-                    width: 45%;
+                    width: 100%;
+                    max-width: 45%;
+                    min-width: 300px;
                     padding: 10px;
                     background-color: #f9f9f9;
                     border-radius: 10px;
@@ -148,7 +158,12 @@ def _historia_consequencias(username):
                     background-color: #ffffff;
                     border: 1px solid #ccc;
                     border-radius: 5px;
-                    cursor: move;
+                    cursor: pointer;
+                }
+
+                .drag-item.selected {
+                    background-color: #cceeff;
+                    border: 2px solid #0077cc;
                 }
 
                 .drop-zone {
@@ -169,7 +184,7 @@ def _historia_consequencias(username):
                     padding: 10px 20px;
                     margin: 10px 0;
                     border-radius: 10px;
-                    background-color: #4CAF50; /* verde suave */
+                    background-color: #4CAF50;
                     color: white;
                     border: none;
                     font-weight: bold;
@@ -178,10 +193,12 @@ def _historia_consequencias(username):
                     cursor: pointer;
                     transition: background-color 0.3s ease, transform 0.2s ease;
                 }
+
                 button:hover {
                     background-color: #45a049;
                     transform: scale(1.05);
                 }
+
                 button:active {
                     background-color: #3e8e41;
                     transform: scale(0.98);
@@ -189,49 +206,54 @@ def _historia_consequencias(username):
             </style>
 
             <div class="drag-container">
-                <div class="drag-list">
-                    <h4>Consequências</h4>
-                    <div id="item1" class="drag-item" draggable="true" ondragstart="drag(event)">Reafirmação do poder central</div>
-                    <div id="item2" class="drag-item" draggable="true" ondragstart="drag(event)">Repressão violenta</div>
-                    <div id="item3" class="drag-item" draggable="true" ondragstart="drag(event)">Legado revolucionário no Nordeste</div>
+                <div class="lists-wrapper">
+                    <div class="drag-list">
+                        <h4>Consequências</h4>
+                        <div id="item1" class="drag-item" onclick="selecionar(this)">Reafirmação do poder central</div>
+                        <div id="item2" class="drag-item" onclick="selecionar(this)">Repressão violenta</div>
+                        <div id="item3" class="drag-item" onclick="selecionar(this)">Legado revolucionário no Nordeste</div>
+                    </div>
+
+                    <div class="drop-list">
+                        <h4>Associe com:</h4>
+                        <div class="drop-zone" id="drop1" onclick="soltar(this)">Dom Pedro I</div>
+                        <div class="drop-zone" id="drop2" onclick="soltar(this)">Líderes da revolta</div>
+                        <div class="drop-zone" id="drop3" onclick="soltar(this)">Movimentos futuros no século XIX</div>
+                    </div>
                 </div>
 
-                <div class="drop-list">
-                    <h4>Associe com:</h4>
-                    <div class="drop-zone" id="drop1" ondrop="drop(event)" ondragover="allowDrop(event)">Dom Pedro I</div>
-                    <div class="drop-zone" id="drop2" ondrop="drop(event)" ondragover="allowDrop(event)">Líderes da revolta</div>
-                    <div class="drop-zone" id="drop3" ondrop="drop(event)" ondragover="allowDrop(event)">Movimentos futuros no século XIX</div>
-                </div>
+                <button onclick="verificarRespostas()">Verificar Respostas</button>
+                <div id="resultado"></div>
             </div>
 
-            <button onclick="verificarRespostas()">Verificar Respostas</button>
-
-            <div id="resultado"></div>
-
             <script>
-                function allowDrop(ev) {
-                    ev.preventDefault();
+                let selecionado = null;
+
+                function selecionar(elem) {
+                    if (selecionado) {
+                        selecionado.classList.remove("selected");
+                    }
+                    if (selecionado === elem) {
+                        selecionado = null;
+                    } else {
+                        selecionado = elem;
+                        selecionado.classList.add("selected");
+                    }
                 }
 
-                function drag(ev) {
-                    ev.dataTransfer.setData("text", ev.target.id);
-                }
-
-                function drop(ev) {
-                    ev.preventDefault();
-                    var data = ev.dataTransfer.getData("text");
-                    var draggedElement = document.getElementById(data);
-                    if (!ev.target.classList.contains("drop-zone")) return;
-                    if (ev.target.children.length === 0) {
-                        ev.target.appendChild(draggedElement);
+                function soltar(dropZone) {
+                    if (selecionado && dropZone.children.length === 0) {
+                        dropZone.appendChild(selecionado);
+                        selecionado.classList.remove("selected");
+                        selecionado = null;
                     }
                 }
 
                 function verificarRespostas() {
                     const corretas = {
-                        "drop1": "item1",  // Dom Pedro I → Reafirmação do poder central
-                        "drop2": "item2",  // Líderes da revolta → Repressão violenta
-                        "drop3": "item3"   // Movimentos futuros no século XIX → Legado revolucionário no Nordeste
+                        "drop1": "item1", // Dom Pedro I
+                        "drop2": "item2", // Líderes da revolta
+                        "drop3": "item3"  // Movimentos futuros
                     };
 
                     let acertos = 0;
@@ -248,7 +270,7 @@ def _historia_consequencias(username):
 
                     let resultado = document.getElementById("resultado");
                     resultado.innerHTML = "Você acertou " + acertos + " de 3!";
-                    resultado.style.backgroundColor = "#28a745"; // verde moderno
+                    resultado.style.backgroundColor = "#28a745";
                     resultado.style.color = "white";
                     resultado.style.fontWeight = "bold";
                     resultado.style.textAlign = "center";
@@ -259,7 +281,7 @@ def _historia_consequencias(username):
             </script>
             """
 
-            st.components.v1.html(html_code, height=700)
+            st.components.v1.html(html_code, height=750)
 
         with abas[3]:
             st.markdown("## Quiz Rápido: Consequências da Revolta")

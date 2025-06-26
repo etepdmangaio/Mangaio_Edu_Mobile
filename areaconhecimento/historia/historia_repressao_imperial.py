@@ -116,7 +116,7 @@ def _historia_repressao_imperial(username):
     with abas[2]:
         
         st.header("📅 Ordem Cronológica - Confederação do Equador")
-        st.write("🔁 Reorganize os eventos na ordem correta! Arraste os blocos para cima ou para baixo.")
+        st.write("🔁 Reorganize os eventos na ordem correta! Toque ou clique em dois blocos para trocá-los.")
 
         html_code = """
         <style>
@@ -137,7 +137,7 @@ def _historia_repressao_imperial(username):
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #004d40;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            cursor: grab;
+            cursor: pointer;
             user-select: none;
             transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
         }
@@ -148,15 +148,13 @@ def _historia_repressao_imperial(username):
             background: linear-gradient(135deg, #b2ebf2, #80deea);
         }
 
-        .item.dragging {
-            opacity: 0.5;
-        }
+        
 
         button {
             padding: 10px 20px;
             border-radius: 10px;
             margin: 10px 0;
-            background-color: #4CAF50; /* verde suave */
+            background-color: #4CAF50;
             color: white;
             border: none;
             font-weight: bold;
@@ -165,57 +163,55 @@ def _historia_repressao_imperial(username):
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
+
         button:hover {
             background-color: #45a049;
             transform: scale(1.05);
         }
+
         button:active {
             background-color: #3e8e41;
             transform: scale(0.98);
         }
         </style>
 
-        <div id="eventos" class="container" ondragover="allowDrop(event)">
-        <div class="item" draggable="true" ondragstart="drag(event)" id="e1">Tropas imperiais enviadas para reprimir</div>
-        <div class="item" draggable="true" ondragstart="drag(event)" id="e2">Prisões e execuções, incluindo Frei Caneca</div>
-        <div class="item" draggable="true" ondragstart="drag(event)" id="e3">Separação de Pernambuco e proclamação da Confederação</div>
-        <div class="item" draggable="true" ondragstart="drag(event)" id="e4">Adesão do Ceará, RN e Paraíba</div>
-        <div class="item" draggable="true" ondragstart="drag(event)" id="e5">Ocupação de Recife pelos imperiais</div>
+        <div id="eventos" class="container">
+            <div class="item" id="e1" onclick="selecionar(this)">Tropas imperiais enviadas para reprimir</div>
+            <div class="item" id="e2" onclick="selecionar(this)">Prisões e execuções, incluindo Frei Caneca</div>
+            <div class="item" id="e3" onclick="selecionar(this)">Separação de Pernambuco e proclamação da Confederação</div>
+            <div class="item" id="e4" onclick="selecionar(this)">Adesão do Ceará, RN e Paraíba</div>
+            <div class="item" id="e5" onclick="selecionar(this)">Ocupação de Recife pelos imperiais</div>
         </div>
 
         <button onclick="verificarOrdem()">Verificar Ordem</button>
         <p id="mensagem"></p>
 
         <script>
-        let dragItem = null;
+        let selecionado = null;
 
-        function drag(ev) {
-            dragItem = ev.target;
-        }
-
-        function allowDrop(ev) {
-            ev.preventDefault();
-            const container = document.getElementById("eventos");
-            const afterElement = getDragAfterElement(container, ev.clientY);
-            if (afterElement == null) {
-            container.appendChild(dragItem);
+        function selecionar(elemento) {
+            if (selecionado === null) {
+                selecionado = elemento;
+                elemento.classList.add("selected");
+            } else if (selecionado === elemento) {
+                // clicar duas vezes no mesmo: desmarcar
+                elemento.classList.remove("selected");
+                selecionado = null;
             } else {
-            container.insertBefore(dragItem, afterElement);
-            }
-        }
+                // trocar os dois elementos
+                let container = document.getElementById("eventos");
+                let clone1 = selecionado.cloneNode(true);
+                let clone2 = elemento.cloneNode(true);
 
-        function getDragAfterElement(container, y) {
-            const draggableElements = [...container.querySelectorAll('.item:not(.dragging)')];
+                clone1.onclick = function() { selecionar(clone1); };
+                clone2.onclick = function() { selecionar(clone2); };
 
-            return draggableElements.reduce((closest, child) => {
-            const box = child.getBoundingClientRect();
-            const offset = y - box.top - box.height / 2;
-            if (offset < 0 && offset > closest.offset) {
-                return { offset: offset, element: child };
-            } else {
-                return closest;
+                container.replaceChild(clone1, elemento);
+                container.replaceChild(clone2, selecionado);
+
+                selecionado.classList.remove("selected");
+                selecionado = null;
             }
-            }, { offset: Number.NEGATIVE_INFINITY }).element;
         }
 
         function verificarOrdem() {
@@ -228,26 +224,22 @@ def _historia_repressao_imperial(username):
                 mensagem.innerHTML = "✅ Parabéns! Ordem correta!";
                 mensagem.style.color = "white";
                 mensagem.style.backgroundColor = "#4CAF50";
-                mensagem.style.fontWeight = "bold";
-                mensagem.style.padding = "10px";
-                mensagem.style.borderRadius = "10px";
-                mensagem.style.textAlign = "center";
-                mensagem.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.1)";
             } else {
                 mensagem.innerHTML = "❌ Ordem incorreta. Tente novamente.";
                 mensagem.style.color = "red";
                 mensagem.style.backgroundColor = "#ffebee";
-                mensagem.style.fontWeight = "bold";
-                mensagem.style.padding = "10px";
-                mensagem.style.borderRadius = "10px";
-                mensagem.style.textAlign = "center";
-                mensagem.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.1)";
             }
+
+            mensagem.style.fontWeight = "bold";
+            mensagem.style.padding = "10px";
+            mensagem.style.borderRadius = "10px";
+            mensagem.style.textAlign = "center";
+            mensagem.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.1)";
         }
         </script>
         """
 
-        components.html(html_code, height=650)
+        components.html(html_code, height=700)
 
     with abas[3]:
         st.markdown("## Quiz Rápido: Repressão Imperial")

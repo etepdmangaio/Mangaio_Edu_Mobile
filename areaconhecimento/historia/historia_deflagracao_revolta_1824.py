@@ -107,13 +107,15 @@ def _historia_deflagracao_revolta_1824(username):
         html_code = """
         <style>
         table {
+            table-layout: fixed;
             border-collapse: collapse;
             margin-bottom: 10px;
             background-color: white;
-        }
+        }      
         td {
-            border: 3px solid rgb(41, 222, 216);
-            padding: 10px;
+            border: 2px solid rgb(41, 222, 216);
+            padding: 6.8px;
+            font-size: 14px;
             text-align: center;
             font-weight: bold;
             cursor: pointer;
@@ -166,16 +168,16 @@ def _historia_deflagracao_revolta_1824(username):
 
         const grid = [
             ["C", "O", "N", "F", "E", "D", "E", "R", "A", "C", "A", "O"],
-            ["A", "P", "Q", "S", "T", "L", "V", "A", "I", "T", "S", "S"],
-            ["S", "E", "P", "R", "E", "V", "O", "L", "T", "A", "Z", "E"],
-            ["E", "R", "I", "O", "P", "A", "Q", "W", "D", "S", "A", "P"],
-            ["R", "N", "D", "F", "R", "E", "I", "C", "A", "N", "E", "A"],
-            ["Ç", "A", "S", "Q", "S", "T", "B", "E", "W", "T", "V", "R"],
-            ["X", "M", "O", "L", "Q", "C", "B", "N", "M", "K", "L", "A"],
-            ["A", "B", "A", "S", "N", "M", "L", "P", "Z", "I", "O", "C"],
-            ["T", "U", "L", "S", "I", "L", "B", "T", "J", "E", "A", "A"],
-            ["M", "C", "S", "A", "E", "A", "E", "C", "L", "G", "S", "O"],
-            ["D", "O", "M", "P", "E", "D", "R", "O", "Z", "B", "E", "J"]
+            ["P", "A", "Q", "S", "T", "L", "V", "A", "I", "T", "S", "S"],
+            ["E", "F", "R", "E", "I", "C", "A", "N", "E", "C", "A", "E"],
+            ["R", "E", "I", "O", "P", "A", "Q", "W", "D", "S", "A", "P"],
+            ["N", "R", "F", "R", "E", "I", "S", "L", "N", "O", "C", "A"],
+            ["A", "C", "S", "Q", "S", "T", "B", "E", "W", "T", "V", "R"],
+            ["M", "X", "O", "L", "Q", "C", "B", "N", "M", "K", "L", "A"],
+            ["B", "A", "R", "E", "V", "O", "L", "T", "A", "I", "O", "C"],
+            ["U", "T", "L", "S", "I", "L", "B", "T", "J", "E", "A", "A"],
+            ["C", "M", "S", "A", "E", "A", "E", "C", "L", "G", "S", "O"],
+            ["O", "L", "D", "O", "M", "P", "E", "D", "R", "O", "E", "J"]
         ];
 
         function renderGrid() {

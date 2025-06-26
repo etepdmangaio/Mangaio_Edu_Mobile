@@ -77,13 +77,15 @@ def _crise_primeiro_reinado(username):
         html_code = """
         <style>
         table {
+            table-layout: fixed;
             border-collapse: collapse;
             margin-bottom: 10px;
             background-color: white;
-        }
+        }      
         td {
-            border: 3px solid rgb(41, 222, 216);
-            padding: 10px;
+            border: 2px solid rgb(41, 222, 216);
+            padding: 6.8px;
+            font-size: 14px;
             text-align: center;
             font-weight: bold;
             cursor: pointer;
@@ -123,29 +125,32 @@ def _crise_primeiro_reinado(username):
             transform: scale(0.98);
         }
         </style>
-
+        
+        
         <div id="game"></div>
+        
+
         <button onclick="checkWord()">Verificar</button>
         <p id="status"></p>
         <p><b>Palavras para encontrar:</b> <span id="word-list"></span></p>
 
         <script>
-        const words = ["REVOLTA", "PERNAMBUCO", "CONFEDERACAO", "FREICANECA", "DOMPEDRO", "SEPARACAO"];
+        const words = ["CRISE", "NORDESTE", "FREICANECA", "DOMPEDRO", "SEPARATISTA"];
         let foundWords = [];
         let selectedCells = [];
 
         const grid = [
-            ["C", "O", "N", "F", "E", "D", "E", "R", "A", "C", "A", "O"],
-            ["A", "P", "Q", "S", "T", "L", "V", "A", "I", "T", "S", "S"],
-            ["S", "E", "P", "R", "E", "V", "O", "L", "T", "A", "Z", "E"],
-            ["E", "R", "I", "O", "P", "A", "Q", "W", "D", "S", "A", "P"],
-            ["R", "N", "D", "F", "R", "E", "I", "C", "A", "N", "E", "A"],
-            ["Ç", "A", "S", "Q", "S", "T", "B", "E", "W", "T", "V", "R"],
-            ["X", "M", "O", "L", "Q", "C", "B", "N", "M", "K", "L", "A"],
-            ["A", "B", "A", "S", "N", "M", "L", "P", "Z", "I", "O", "C"],
-            ["T", "U", "L", "S", "I", "L", "B", "T", "J", "E", "A", "A"],
-            ["M", "C", "S", "A", "E", "A", "E", "C", "L", "G", "S", "O"],
-            ["D", "O", "M", "P", "E", "D", "R", "O", "Z", "B", "E", "J"]
+            ["F", "R", "E", "I", "C", "A", "N", "E", "C", "A", "L", "S"],
+            ["A", "N", "Q", "S", "T", "L", "V", "A", "I", "T", "S", "E"],
+            ["S", "O", "P", "I", "N", "S", "A", "T", "I", "S", "Z", "P"],
+            ["E", "R", "I", "O", "P", "A", "Q", "W", "D", "S", "A", "A"],
+            ["R", "D", "D", "S", "I", "L", "B", "T", "A", "N", "E", "R"],
+            ["Ç", "E", "S", "Q", "S", "T", "B", "E", "W", "T", "V", "A"],
+            ["X", "S", "O", "L", "Q", "C", "B", "N", "M", "K", "L", "T"],
+            ["A", "T", "F", "R", "E", "I", "C", "A", "N", "E", "E", "I"],
+            ["T", "E", "L", "S", "I", "L", "B", "T", "J", "E", "A", "S"],
+            ["D", "O", "M", "P", "E", "D", "R", "O", "L", "G", "S", "T"],
+            ["R", "N", "C", "R", "I", "S", "E", "O", "Z", "B", "E", "A"]
         ];
 
         function renderGrid() {

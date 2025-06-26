@@ -145,7 +145,7 @@ def _historia_consequencias(username):
                 .drag-list, .drop-list {
                     width: 100%;
                     max-width: 45%;
-                    min-width: 300px;
+                    min-width: 240px;
                     padding: 10px;
                     background-color: #f9f9f9;
                     border-radius: 10px;

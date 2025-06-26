@@ -114,8 +114,8 @@ def _historia_deflagracao_revolta_1824(username):
         }      
         td {
             border: 2px solid rgb(41, 222, 216);
-            padding: 6.8px;
-            font-size: 14px;
+            padding: 4.6px;
+            font-size: 12px;
             text-align: center;
             font-weight: bold;
             cursor: pointer;
